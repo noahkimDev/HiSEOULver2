@@ -21,14 +21,4 @@
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 </div>  
 
-## 기능
-
-- 실제 한국에 거주하는 외국인들을 대상으로 서울생활 필수정보에 대한 설문조사 실시 => 이를 바탕으로 기능 개발 
-
-1. 카테고리별 분류 ( culture, 코로나 관련 정보, housing, )
-2. 검색 기능
-3. 회원가입, 로그인, 로그아웃(google OAuth)
-4. myseoul(mypage) 기능 ( 로그인하면 내가 방문한 장소 카테고리별로 보여주기)
-5. 첫화면 => 서울날씨, 미세먼지농도 표시
-6. 
 
