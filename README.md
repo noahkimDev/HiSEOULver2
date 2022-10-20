@@ -24,3 +24,5 @@
 ## 와이어프레임
 
 https://www.figma.com/file/7F5oXGAaG92w0u2rVt1ZWm/Untitled?node-id=0%3A1
+
+## 스키마
