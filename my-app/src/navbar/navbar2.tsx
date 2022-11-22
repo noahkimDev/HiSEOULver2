@@ -89,6 +89,7 @@ const Navbar2 = () => {
             <Button variant="outline-success" onClick={signUp}>
               Sign Up
             </Button>{" "}
+            {/* <div></div> */}
           </div>
         </Container>
       </Navbar>
