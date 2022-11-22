@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Smooch&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lemon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
+
+.image-container {
+  width: 100%;
+  height: 70vh;
+  background-color: black;
+  text-align: center;
+}
+
+.image-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.image-frame img,
+.wow {
+  width: 100%;
+  height: 100%;
+  filter: brightness(70%);
+}
+
+.image-txt {
+  /* z-index: 1; */
+  position: relative;
+  color: white;
+  font-size: 4em;
+  top: -400px;
+  font-family: "Chango";
+}
+
+.image-txt2 {
+  /* z-index: 1; */
+  position: relative;
+  color: white;
+  font-size: 1em;
+  top: -400px;
+  font-family: "Chango";
+}

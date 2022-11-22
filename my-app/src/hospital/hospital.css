@@ -1,0 +1,35 @@
+.hospital-container {
+  width: 100%;
+  height: 803px;
+  margin: 0px;
+}
+
+.hospital-upper-frame {
+  width: 100%;
+  height: 10%;
+  text-align: left;
+}
+.hospital-lower-frame {
+  margin-top: 39px;
+  width: 100%;
+  height: 90%;
+  /* display: flex; */
+}
+.hospital {
+  width: 100%;
+  height: 100%;
+}
+.hospital p {
+  font-size: 30px;
+}
+
+.explain {
+  width: 100%;
+  height: 85vh;
+  border: 20px solid #6c757d;
+  /* border-color: ; */
+}
+
+.btn {
+  border-radius: 0px;
+}
