@@ -1,4 +1,5 @@
 # HiSEOUL
+<<<<<<< HEAD
 ![facebook_cover_photo_2](https://user-images.githubusercontent.com/68933325/195326750-59b65e72-4abc-4354-a89b-b566a6fd157d.png)
 ## About
 - 외국인들을 위한 서울 가이드
@@ -26,3 +27,6 @@
 https://www.figma.com/file/7F5oXGAaG92w0u2rVt1ZWm/Untitled?node-id=0%3A1
 
 ## 스키마
+=======
+
+>>>>>>> e38867fbca40e089643569a0e58fc4a24e0998ba
