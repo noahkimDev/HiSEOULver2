@@ -9,9 +9,11 @@ div {
 
 .culture-container {
   width: 100%;
+  /* height: 832px; */
   height: 832px;
   margin: 0px;
-  /* padding: 24px; */
+
+  /* padding-top: 24px; */
 }
 
 .culture-upper-frame {

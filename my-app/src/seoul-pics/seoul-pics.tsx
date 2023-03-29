@@ -12,7 +12,7 @@ function FigureExample() {
   return (
     <div className="image-container">
       <Figure className="image-frame">
-        <Figure.Image width={171} height={180} alt="171x180" src={image4} />
+        <Figure.Image src={image4} className="txt-group" />
         <p className="image-txt">Welcome to Seoul</p>
         <p className="image-txt2">
           We will share you the information for living in Seoul
