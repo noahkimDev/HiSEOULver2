@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Smooch&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lemon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
+
+div {
+  margin: 0;
+}
+
+.culture-container {
+  width: 100%;
+  height: 832px;
+  margin: 0px;
+  /* padding: 24px; */
+}
+
+.culture-upper-frame {
+  width: 100%;
+  height: 10%;
+  text-align: left;
+  /* background-color: rgb(50, 60, 104); */
+}
+.performance {
+  width: 100%;
+  height: 100%;
+}
+
+.performance p {
+  font-size: 30px;
+}
+
+.culture-lower-frame {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  /* background-color: black; */
+}
+.left-content {
+  /* width: 20%; */
+  min-width: 500px;
+  max-width: 500px;
+  height: 100%;
+  background-color: darkgreen;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  overflow: auto;
+}
+.performance-card {
+  margin: auto;
+  width: 80%;
+  padding: 20px;
+  background-color: blue;
+}
+.right-content {
+  width: 80%;
+  height: 100%;
+  background-color: burlywood;
+}
+.img-container {
+  height: 250px;
+}
