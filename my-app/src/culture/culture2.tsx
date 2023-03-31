@@ -22,25 +22,19 @@ function Culture() {
         <div className="culture-lower-frame">
           <div className="left-content">
             <div className="performance-card">
-              <a href="www.naver.com">
-                <Card>
-                  <Card.Img
-                    className="img-container"
-                    variant="top"
-                    src={img4}
-                  />
-                  <Card.Body>
-                    <Card.Title>Card title</Card.Title>
-                    <Card.Text className="txt-container">
-                      This is a longer card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </a>
+              <Card>
+                <Card.Img className="img-container" variant="top" src={img4} />
+                <Card.Body>
+                  <Card.Title>Card title</Card.Title>
+                  <Card.Text className="txt-container">
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
             </div>
-            <div className="performance-card">
+            {/* <div className="performance-card">
               <Card>
                 <Card.Img className="img-container" variant="top" src={img5} />
                 <Card.Body>
@@ -52,22 +46,12 @@ function Culture() {
                   <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
               </Card>
-            </div>
-            <div className="performance-card">
-              <Card>
-                <Card.Img className="img-container" variant="top" src={img6} />
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
-            </div>
+            </div> */}
           </div>
-          <div className="right-content"></div>
+
+          {/* 오른쪽 컨텐츠 */}
+          {/* <div className="right-content"></div> */}
+
           {/* <Carousel>
             <Carousel.Item>
               <img className="d-block w-100" src={img5} alt="First slide" />

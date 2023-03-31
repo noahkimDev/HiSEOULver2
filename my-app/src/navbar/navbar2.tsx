@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import Alert from "react-bootstrap/Alert";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -100,6 +99,15 @@ const Navbar2 = (props: any) => {
                   }}
                 >
                   Sign Up
+                </Button>
+                <Button
+                  variant="outline-success"
+                  onClick={() => {
+                    navigate("/festivals");
+                    window.location.reload();
+                  }}
+                >
+                  Try
                 </Button>
               </>
             )}

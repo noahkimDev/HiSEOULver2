@@ -14,6 +14,8 @@ import Signin2 from "./signin/signin2";
 import Signup2 from "./signup/signup2";
 import Hospital from "./hospital/hospital";
 import Home from "./home";
+import Click_culture from "./clickCulture/clickCulture";
+
 import Icon from "./icon/icon";
 import axios from "axios";
 import { useState } from "react";
@@ -37,26 +39,30 @@ function App() {
     .then((info) => {
       console.log(info.data.user);
       if (info.data.user) {
-        console.log("여기잖아");
         setUserCheck(info.data.user.member_id);
       } else {
-        console.log("여기아니잖아");
         setUserCheck("");
       }
     });
-  console.log("이제시작하자", userCheck);
   if (userCheck) {
     return (
       <>
         <Routes>
           <Route path="/" element={<Home userCheck={userCheck}></Home>} />
+          <Route
+            path="/festivals"
+            element={<Click_culture></Click_culture>}
+          ></Route>
         </Routes>
       </>
     );
   } else {
     return (
       <>
-        <Home></Home>
+        <Routes>
+          <Route path="/" element={<Home></Home>} />
+          <Route path="/festivals" element={<Click_culture></Click_culture>} />
+        </Routes>
       </>
     );
   }
