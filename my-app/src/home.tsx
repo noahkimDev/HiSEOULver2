@@ -6,7 +6,6 @@ import Hospital from "./hospital/hospital";
 import Icon from "./icon/icon";
 
 function Home(props: any) {
-  console.log("제발제발", props.userCheck);
   return (
     <>
       <Navbar2 user={props.userCheck}></Navbar2>
