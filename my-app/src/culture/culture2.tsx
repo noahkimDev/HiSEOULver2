@@ -1,3 +1,4 @@
+import "./swiper-bundle.min.css";
 import "./culture2.css";
 import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
@@ -9,6 +10,8 @@ import img6 from "../img/6.png";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Card from "react-bootstrap/Card";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 function Culture() {
   return (
     <>
@@ -20,22 +23,33 @@ function Culture() {
           {/* <p>Culture</p> */}
         </div>
         <div className="culture-lower-frame">
-          <div className="left-content">
-            <div className="performance-card">
-              <Card>
-                <Card.Img className="img-container" variant="top" src={img4} />
-                <Card.Body>
-                  <Card.Title>Card title</Card.Title>
-                  <Card.Text className="txt-container">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </div>
-            {/* <div className="performance-card">
-              <Card>
+          <div className="slide-container">
+            <div className="slide-container2">
+              {/*slice-container*/}
+              <div className="slide-content">
+                <div className="card-wrapper">
+                  <div className="card">
+                    <div className="image-content">
+                      <span className="overlay"></span>
+                      <div className="card-image">
+                        <img src={img4} alt="" className="card-img" />
+                      </div>
+                    </div>
+                    <div className="card-content">
+                      <h2 className="name">Noah Kim</h2>
+                      <p className="description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Alias iusto ducimus dolorum aspernatur ipsum provident
+                        blanditiis possimus repudiandae voluptatem illum
+                        corporis reprehenderit, rem debitis, minus nulla facere
+                        ullam! Aperiam, minima.
+                      </p>
+                      <button className="button">view more</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* <Card>
                 <Card.Img className="img-container" variant="top" src={img5} />
                 <Card.Body>
                   <Card.Title>Card Title</Card.Title>
@@ -45,8 +59,8 @@ function Culture() {
                   </Card.Text>
                   <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
-              </Card>
-            </div> */}
+              </Card> */}
+            </div>
           </div>
 
           {/* 오른쪽 컨텐츠 */}
