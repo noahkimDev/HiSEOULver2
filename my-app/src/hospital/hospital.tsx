@@ -4,14 +4,19 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import React, { useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import Wow from "./mapContainer";
 
 function Hospital() {
   const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState("1");
-
+  let [style1, setStyle1]: any = useState({ display: "block" });
+  let [style2, setStyle2]: any = useState({ display: "none" });
   const radios = [
-    { name: "Hospital", value: "1" },
-    { name: "Animal Hospital", value: "2" },
+    {
+      name: "Search hospital with the area name where you are (ex) 서울역 병원",
+      value: "1",
+    },
+    { name: "keyword-explanation", value: "2" },
   ];
   return (
     <>
@@ -41,7 +46,17 @@ function Hospital() {
                 name="radio"
                 value={radio.value}
                 checked={radioValue === radio.value}
-                onChange={(e) => setRadioValue(e.currentTarget.value)}
+                onChange={function (e) {
+                  if (radioValue === "1") {
+                    setRadioValue(e.currentTarget.value);
+                    setStyle1({ display: "none" });
+                    setStyle2({ display: "block" });
+                  } else if (radioValue === "2") {
+                    setRadioValue(e.currentTarget.value);
+                    setStyle1({ display: "block" });
+                    setStyle2({ display: "none" });
+                  }
+                }}
               >
                 {radio.name}
               </ToggleButton>
@@ -49,8 +64,13 @@ function Hospital() {
             {/* </ButtonGroup> */}
           </div>
           <div className="explain">
-            <div className="hospital-explanation"></div>
-            <div className="animal-hospital-explanation"></div>
+            <div className="hospital-explanation" style={style1}>
+              {/* gf */}
+              <Wow></Wow>
+            </div>
+            <div className="keyword-explanation" style={style2}>
+              ff
+            </div>
           </div>
         </div>
       </div>
