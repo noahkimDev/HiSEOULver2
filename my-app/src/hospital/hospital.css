@@ -33,3 +33,17 @@
 .btn {
   border-radius: 0px;
 }
+
+.hospital-explanation {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  /* display: none; */
+}
+
+.keyword-explanation {
+  width: 100%;
+  height: 100%;
+  /* display: none; */
+  background-color: black;
+}
