@@ -47,3 +47,8 @@
   /* display: none; */
   background-color: black;
 }
+
+.selectCity {
+  width: 300px;
+  display: inline-block;
+}
