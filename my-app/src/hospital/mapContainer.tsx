@@ -2,7 +2,7 @@ import "./mapContainer.css";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import React, { useState, useEffect } from "react";
 
-function Wow() {
+function Typescriptmap() {
   const [info, setInfo]: any = useState();
   const [markers, setMarkers]: any = useState([]);
   const [map, setMap]: any = useState();
@@ -11,7 +11,7 @@ function Wow() {
     if (!map) return;
     const ps = new kakao.maps.services.Places();
 
-    ps.keywordSearch("마포구 안과", (data, status, _pagination) => {
+    ps.keywordSearch("수원시 팔달구 안과", (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -77,4 +77,4 @@ function Wow() {
   );
 }
 
-export default Wow;
+export default Typescriptmap;
