@@ -36,7 +36,7 @@ const Navbar2 = (props: any) => {
   }
   //
 
-  const checkSignin = useSelector((state: any) => state.checkMember.member);
+  // const checkSignin = useSelector((state: any) => state.checkMember.member);
   // console.log("바꼈", checkSignin);
   let [signupModal, setSignupModal] = useState("black-bg");
   let [signinModal, setSigninModal] = useState("black-bg");

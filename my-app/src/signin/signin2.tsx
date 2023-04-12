@@ -7,17 +7,17 @@ import kakaoBtn from "../img/kakao.png";
 import { useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { rememberMember } from "../store";
+// import { rememberMember } from "../store";
 // import {redirct}
 import { useNavigate, Link } from "react-router-dom";
 
 // import { Link } from "react-router-dom";
 function Signin2(props: any) {
-  function useSelectorFunc() {
-    return useSelector((state: any) => {
-      return state.checkMember.member;
-    });
-  }
+  // function useSelectorFunc() {
+  //   return useSelector((state: any) => {
+  //     return state.checkMember.member;
+  //   });
+  // }
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

@@ -1,8 +1,12 @@
 import "./mapContainer.css";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function Typescriptmap() {
+  const mapInfo = useSelector((state: any) => state.checkMapInfo);
+  console.log(mapInfo, "ㅇㄴ리ㅓ밀");
+
   const [info, setInfo]: any = useState();
   const [markers, setMarkers]: any = useState([]);
   const [map, setMap]: any = useState();
@@ -61,11 +65,11 @@ function Typescriptmap() {
             {info && info.content === marker.content && (
               <div
                 className="mark"
-                // style={{
-                //   color: "#000",
-                //   width: "300px",
-                //   textAlign: "center",
-                // }}
+                style={{
+                  color: "#000",
+                  width: "300px",
+                  textAlign: "center",
+                }}
               >
                 {marker.content}
               </div>

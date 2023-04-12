@@ -1,33 +1,55 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-interface Member {
-  member: string;
+// interface Member {
+//   member: string;
+// }
+
+interface Map {
+  bigcity: string;
+  smallcity: string;
+  hospitaltype: string;
 }
 
-const initialState: Member = { member: "" };
+// const initialState: Map = { member: "" };
+const initialState: Map = { bigcity: "", smallcity: "", hospitaltype: "" };
 
-const checkMember = createSlice({
-  name: "login_member",
+// const checkMember = createSlice({
+//   name: "login_member",
+//   initialState,
+//   reducers: {
+//     rememberMember: (state, action) => {
+//       state.member = action.payload;
+//     },
+//     removeMember: (state) => {
+//       state.member = "";
+//     },
+//   },
+// });
+
+const checkMapInfo = createSlice({
+  name: "map_info",
   initialState,
   reducers: {
-    rememberMember: (state, action) => {
-      // console.log(
-      //   "state.member " + state.member,
-      //   "payload : " + action.payload
-      // );
-      state.member = action.payload;
-      // return state;
-      // console.log("state.member with payload " + state.member);
+    rememberBigCity: (state, action) => {
+      state.bigcity = action.payload;
     },
-    removeMember: (state) => {
-      state.member = "";
+    rememberSmallCity: (state, action) => {
+      state.smallcity = action.payload;
     },
+    rememberHospitalType: (state, action) => {
+      state.hospitaltype = action.payload;
+    },
+    removeInfo: () => {},
   },
 });
-export const { rememberMember, removeMember } = checkMember.actions;
+
+// export const { rememberMember, removeMember } = checkMember.actions;
+export const { rememberBigCity, rememberHospitalType, rememberSmallCity } =
+  checkMapInfo.actions;
 export default configureStore({
   reducer: {
-    checkMember: checkMember.reducer,
+    // checkMember: checkMember.reducer,
+    checkMapInfo: checkMapInfo.reducer,
   },
 });
 // import { configureStore, createSlice } from "@reduxjs/toolkit";
