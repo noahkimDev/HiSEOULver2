@@ -22,7 +22,7 @@ function Hospital() {
       name: "Choose the area name you are living, and you can find out where hospitals are",
       value: "1",
     },
-    { name: "keyword-explanation", value: "2" },
+    // { name: "keyword-explanation", value: "2" },
   ];
 
   return (
