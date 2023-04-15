@@ -3,7 +3,7 @@
 import "./hospital.css";
 
 import Form from "react-bootstrap/Form";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cityNameObj from "./cityNameObj";
 import { Item } from "react-bootstrap/lib/Breadcrumb";
 import Typescriptmap from "./mapContainer";
@@ -17,9 +17,9 @@ import {
 
 function Address() {
   const dispatch = useDispatch();
-  const [choosedCity, setChoosedCity] = useState("서울");
-  const [choosedSmallCity, setChoosedSmallCity] = useState("송파구");
-  const [choosedHospital, setChoosedHospital] = useState("치과");
+  const [choosedCity, setChoosedCity]: any = useState("서울(Seoul)");
+  const [choosedSmallCity, setChoosedSmallCity] = useState("");
+  const [choosedHospital, setChoosedHospital] = useState("");
   const [listCity, setListCity]: any = useState([
     "서울",
     "부산",
@@ -39,15 +39,20 @@ function Address() {
     "경상남도",
     "제주특별자치도",
   ]);
-
+  useEffect(() => {
+    dispatch(rememberBigCity(choosedCity));
+    dispatch(rememberHospitalType(choosedHospital));
+    dispatch(rememberSmallCity(choosedSmallCity));
+  }, []);
   return (
     <>
       <Form.Select
         size="sm"
         className="selectCity"
-        onChange={function (e) {
-          setChoosedCity(e.target.value);
-          dispatch(rememberBigCity(e.target.value));
+        onChange={async function (e) {
+          await setChoosedCity(e.target.value);
+          await dispatch(rememberBigCity(e.target.value));
+          await dispatch(rememberSmallCity(""));
         }}
       >
         {
@@ -64,19 +69,26 @@ function Address() {
       <Form.Select
         size="sm"
         className="selectCity"
-        onChange={function (e) {
-          setChoosedSmallCity(e.target.value);
-          dispatch(rememberSmallCity(e.target.value));
+        onChange={async function (e) {
+          await setChoosedSmallCity(e.target.value);
+          await dispatch(rememberSmallCity(e.target.value));
         }}
       >
+        {/* {cityNameObj[choosedCity] &&
+          cityNameObj[choosedCity].map((e, i) => (
+            <option value={e} key={i}>
+              {e}
+            </option>
+          ))} */}
+
         <CityListDetail cityName={choosedCity}></CityListDetail>
       </Form.Select>
       <Form.Select
         size="sm"
         className="selectCity"
-        onChange={function (e) {
-          setChoosedHospital(e.target.value);
-          dispatch(rememberHospitalType(e.target.value));
+        onChange={async function (e) {
+          await setChoosedHospital(e.target.value);
+          await dispatch(rememberHospitalType(e.target.value));
         }}
       >
         <option value="">hospital type</option>
@@ -96,29 +108,33 @@ function Address() {
 function BigcityList() {
   return (
     <>
-      {cityNameObj.list.map((e, i) => (
-        <option key={i} value={e}>
-          {e}
-        </option>
-      ))}
+      {cityNameObj.list &&
+        cityNameObj.list.map((e, i) => (
+          <option key={i} value={e}>
+            {e}
+          </option>
+        ))}
     </>
   );
 }
 
 function CityListDetail(props: any) {
-  let arr = [...cityNameObj[props.cityName]];
-
+  // const arr = [...cityNameObj[props.cityName]];
+  // for (let key of Object.keys(cityNameObj)) {
+  //   if (key === props.cityName) {
+  //     cityNameObj.key.map((e, i) => console.log("afafss"));
+  //   }
+  // }
+  let city = props.cityName;
+  let city2 = city.slice(0, city.indexOf("("));
   return (
     <>
-      {
-        //
-        arr.map((e, i) => (
+      {cityNameObj[city2] &&
+        cityNameObj[city2].map((e, i) => (
           <option value={e} key={i}>
             {e}
           </option>
-        ))
-        // <option>{cityNameObj[props.cityName]}</option>
-      }
+        ))}
     </>
   );
 }

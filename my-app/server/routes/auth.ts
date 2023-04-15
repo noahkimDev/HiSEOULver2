@@ -10,7 +10,9 @@ const { checkLogIn } = require("./middlewares");
 const memberDb = require("../models/member");
 const router = express.Router();
 const cors = require("cors");
+const fs = require("fs");
 
+const directory = "../src/img/bringCultures";
 // app.set("");
 
 // 로그인
@@ -77,6 +79,18 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
     console.error(error);
     return next(error);
   }
+});
+
+router.get("/auth/getList", (req: any, res: any) => {
+  fs.readdir(directory, (err: any, files: any) => {
+    if (err) {
+      console.error(err);
+      console.log("에러");
+      return;
+    }
+    console.log("성공");
+    res.send(files);
+  });
 });
 // 최초 접속 시 로그인 유무 확인하는 코드
 router.get("/auth/haveUserInfo", (req: any, res: any) => {
