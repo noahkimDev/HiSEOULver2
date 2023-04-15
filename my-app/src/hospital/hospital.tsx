@@ -6,10 +6,13 @@ import React, { useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import Form from "react-bootstrap/Form";
 import { Address } from "./address";
+import { useSelector } from "react-redux";
 
 import Typescriptmap from "./mapContainer";
 
 function Hospital() {
+  const selector = useSelector((state: any) => state.checkMapInfo);
+
   const [chooseCity, setChooseCity] = useState([]);
   const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState("1");
@@ -65,7 +68,7 @@ function Hospital() {
             <div className="hospital-explanation" style={style1}>
               {/* gf */}
               <Address></Address>
-              <Typescriptmap></Typescriptmap>
+              <Typescriptmap userCity={selector}></Typescriptmap>
             </div>
             <div className="keyword-explanation" style={style2}>
               ff

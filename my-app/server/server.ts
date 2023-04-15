@@ -83,6 +83,8 @@ passportIndex();
 // app.get("/auth/kakao", (req: any, res: any) => {
 //   res.send("카카오로그인성공");
 // });
+//  get요청 '/getList'    img/bringCultures 파일 리스트
+
 app.use("/", auth);
 // app.use("/completeLogin", (req:any,res:any)=>{
 //   console.log('완성')
