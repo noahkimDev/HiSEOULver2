@@ -103,7 +103,7 @@ const Navbar2 = (props: any) => {
                 <Button
                   variant="outline-success"
                   onClick={() => {
-                    navigate("/festivals");
+                    navigate("/exhibition");
                     window.location.reload();
                   }}
                 >

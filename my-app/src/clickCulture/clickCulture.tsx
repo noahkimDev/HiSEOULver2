@@ -1,8 +1,9 @@
 import "./clickCulture.css";
 import Navbar2 from "../navbar/navbar2";
-import { Route, Routes } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function Click_culture() {
+  const { id } = useParams();
   return (
     <>
       {/* <Routes>
@@ -11,7 +12,7 @@ function Click_culture() {
 
       <Navbar2></Navbar2>
       <div className="example">
-        <div className="aa">wowwowowo</div>
+        <div className="aa">{id}</div>
       </div>
     </>
   );
