@@ -30,6 +30,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 function App() {
+  // useParams 사용
   // usestate사용
   let [userCheck, setUserCheck] = useState("");
   axios
@@ -50,7 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home userCheck={userCheck}></Home>} />
           <Route
-            path="/festivals"
+            path="/exhibition/:id"
             element={<Click_culture></Click_culture>}
           ></Route>
         </Routes>
@@ -61,7 +62,10 @@ function App() {
       <>
         <Routes>
           <Route path="/" element={<Home></Home>} />
-          <Route path="/festivals" element={<Click_culture></Click_culture>} />
+          <Route
+            path="/exhibition/:id"
+            element={<Click_culture></Click_culture>}
+          />
         </Routes>
       </>
     );
