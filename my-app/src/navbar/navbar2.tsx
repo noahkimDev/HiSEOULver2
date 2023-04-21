@@ -46,7 +46,7 @@ const Navbar2 = (props: any) => {
       <Signin2 name={signinModal}></Signin2>
       <Signup2 name={signupModal}></Signup2>
 
-      <Navbar bg="light" expand="lg" className="navbar">
+      <Navbar bg="primary" expand="lg" className="navbar">
         <Container>
           <Navbar.Brand href="#home">HiSEOUL</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

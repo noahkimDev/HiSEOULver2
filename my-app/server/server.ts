@@ -68,7 +68,7 @@ app.use(passport.session());
 // );
 
 sequelize
-  .sync({ force: false })
+  .sync({ alert: true })
   .then(() => {
     console.log("데이터베이스 연결성공");
   })
