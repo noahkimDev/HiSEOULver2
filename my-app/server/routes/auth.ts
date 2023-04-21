@@ -7,7 +7,10 @@ const passport = require("passport");
 const path = require("path");
 // const app1 = express1();
 const { checkLogIn } = require("./middlewares");
+
 const memberDb = require("../models/member");
+const exhibitionDb = require("../models/exhibition");
+
 const router = express.Router();
 const cors = require("cors");
 const fs = require("fs");
@@ -79,6 +82,17 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
     console.error(error);
     return next(error);
   }
+});
+
+router.post("/auth/exhibition_detail", async (req: any, res: any) => {
+  let a = req.body;
+  console.log("선택한 전시회", a.clickedEvent);
+
+  // const clickedEvent = await exhibitionDb.findOne({
+  //   where: { name: req.body },
+  // });
+
+  res.send(a);
 });
 
 router.get("/auth/getList", (req: any, res: any) => {
