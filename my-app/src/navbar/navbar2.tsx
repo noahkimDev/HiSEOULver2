@@ -40,13 +40,12 @@ const Navbar2 = (props: any) => {
   // console.log("바꼈", checkSignin);
   let [signupModal, setSignupModal] = useState("black-bg");
   let [signinModal, setSigninModal] = useState("black-bg");
-  console.log("가나다라", props.user);
   return (
     <>
       <Signin2 name={signinModal}></Signin2>
       <Signup2 name={signupModal}></Signup2>
 
-      <Navbar bg="primary" expand="lg" className="navbar">
+      <Navbar bg="white" expand="lg" className="navbar">
         <Container>
           <Navbar.Brand href="#home">HiSEOUL</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -99,15 +98,6 @@ const Navbar2 = (props: any) => {
                   }}
                 >
                   Sign Up
-                </Button>
-                <Button
-                  variant="outline-success"
-                  onClick={() => {
-                    navigate("/exhibition");
-                    window.location.reload();
-                  }}
-                >
-                  Try
                 </Button>
               </>
             )}

@@ -40,6 +40,10 @@ module.exports = class ExhibitionDetail extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
+        event_name: {
+          type: Sequelize.STRING(100),
+          allowNull: false,
+        },
       },
       {
         sequelize,
