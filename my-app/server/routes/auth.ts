@@ -52,7 +52,8 @@ router.use(
   passport.authenticate("kakao", { failureRedirect: "/fail" }),
   (req: any, res: any) => {
     console.log("헤더");
-    res.send("kakao login success");
+    // res.send("kakao login success");
+    res.redirect("http://localhost:3000");
     // res.redirect("/auth/completeLogin");
   } //
 );
@@ -85,14 +86,13 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
 });
 
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
-  let a = req.body;
-  console.log("선택한 전시회", a.clickedEvent);
+  let data = req.body;
 
-  // const clickedEvent = await exhibitionDb.findOne({
-  //   where: { name: req.body },
-  // });
+  const clickedEvent = await exhibitionDb.findOne({
+    where: { name: data.clickedEvent },
+  });
 
-  res.send(a);
+  res.send(clickedEvent);
 });
 
 router.get("/auth/getList", (req: any, res: any) => {

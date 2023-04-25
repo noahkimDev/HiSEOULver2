@@ -52,7 +52,7 @@ function App() {
           <Route path="/" element={<Home userCheck={userCheck}></Home>} />
           <Route
             path="/exhibition/:id"
-            element={<Click_culture></Click_culture>}
+            element={<Click_culture userCheck={userCheck}></Click_culture>}
           ></Route>
         </Routes>
       </>

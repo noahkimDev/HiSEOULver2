@@ -127,22 +127,22 @@ function Signin2(props: any) {
                   />
                 </Form.Group>
                 <div className="signin-button d-grid gap-3">
-                  {/* <a href="http://localhost:8081/auth/kakao"> */}
-                  <Button
-                    className="kakaoSignin"
-                    href="http://localhost:8081/auth/kakao"
-                    variant="warning"
-                    // type="submit"
-                    size="lg"
-                    // onClick={() => {
-                    //   kakaoLogin();
-                    //   // navigate("/");
-                    //   // window.location.reload();
-                    // }}
-                  >
-                    Kakao
-                  </Button>
-                  {/* </a> */}
+                  <a href="http://localhost:8081/auth/kakao">
+                    <Button
+                      className="kakaoSignin"
+                      // href="http://localhost:8081/auth/kakao"
+                      variant="warning"
+                      // type="submit"
+                      size="lg"
+                      // onClick={() => {
+                      // kakaoLogin();
+                      //   // navigate("/");
+                      //   // window.location.reload();
+                      // }}
+                    >
+                      Kakao
+                    </Button>
+                  </a>
 
                   <Button
                     variant="info"
