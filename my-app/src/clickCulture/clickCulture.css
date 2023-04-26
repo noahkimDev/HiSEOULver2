@@ -122,6 +122,16 @@ Chango&display=swap"); */
   font-family: "Courier New", Courier, monospace;
 }
 
+.commnetContainer {
+}
+
+.comment {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 69%;
+}
+
 @media screen and (max-width: 1733px) {
   /* .information-container div {
     width: 50%;

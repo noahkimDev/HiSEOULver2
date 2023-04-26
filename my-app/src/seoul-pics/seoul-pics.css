@@ -20,7 +20,6 @@
   height: 100%;
   filter: brightness(70%);
 }
-
 .image-txt {
   /* z-index: 1; */
   position: relative;
@@ -37,4 +36,25 @@
   font-size: 1em;
   top: -370px;
   font-family: "Chango";
+}
+
+@media screen and (max-height: 700px) {
+  /* .information-container div {
+      width: 50%;
+    } */
+  .image-txt {
+    position: relative;
+    color: white;
+    font-size: 4rem;
+    top: -290px;
+    font-family: "Chango";
+  }
+  .image-txt2 {
+    /* z-index: 1; */
+    position: relative;
+    color: white;
+    font-size: 1em;
+    top: -290px;
+    font-family: "Chango";
+  }
 }

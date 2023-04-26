@@ -25,20 +25,23 @@ module.exports = () => {
           profile,
           "그리고" + typeof profile.id
         );
+        let wow = profile.id.toString();
+        const hash = bcrypt.hash(wow, 12);
+        console.log("가자", JSON.stringify(hash));
         try {
           const exMember = await memberDb.findOne({
             where: {
-              member_id: profile.id,
+              member_id: profile.username,
               provider: "kakao",
             },
           });
           if (exMember) {
-            console.log("여기?>");
             done(null, exMember);
           } else {
             const newMember = await memberDb.create({
-              member_id: profile.id,
-              member_pw: profile.username,
+              // profile.id
+              member_id: profile.username,
+              member_pw: profile.id,
               provider: "kakao",
             });
             done(null, newMember);
