@@ -106,6 +106,15 @@ function Click_culture(props: any) {
         <div style={{ padding: "100px" }}>
           <DetailMap address={address}></DetailMap>
         </div>
+        <div className="commentContainer">
+          <textarea
+            className="comment"
+            name=""
+            id=""
+            cols={30}
+            rows={10}
+          ></textarea>
+        </div>
         <div>{props.userCheck}</div>
       </div>
     </>

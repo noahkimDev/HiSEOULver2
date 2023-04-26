@@ -1,5 +1,7 @@
 // import App from "../../src/App";
 
+import { resolveTypeReferenceDirective } from "typescript";
+
 const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
@@ -113,7 +115,10 @@ router.get("/auth/haveUserInfo", (req: any, res: any) => {
 });
 
 router.post("/auth/logout", (req: any, res: any, next: any) => {
-  console.log("로그아웃 전", req.user);
+  if (req.user.provider === "kakao") {
+    console.log("로그아웃 전", req.user);
+    console.log("잘들어왔어");
+  }
   req.logout(function (err: any) {
     if (err) {
       return next(err);
