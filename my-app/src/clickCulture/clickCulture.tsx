@@ -4,13 +4,19 @@ import { useParams } from "react-router-dom";
 import Figure from "react-bootstrap/Figure";
 import Badge from "react-bootstrap/Badge";
 import axios from "axios";
-import React, { useState } from "react";
 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 // import backgroundImg from "../img/3.jpg";
 import backgroundImg from "../img/6.png";
 import DetailMap from "./detailMap";
 
 function Click_culture(props: any) {
+  const navigate = useNavigate();
   const { id }: any = useParams();
   let [title, setTitle] = useState("");
   let [fee, setFee] = useState("");
@@ -107,13 +113,24 @@ function Click_culture(props: any) {
           <DetailMap address={address}></DetailMap>
         </div>
         <div className="commentContainer">
-          <textarea
-            className="comment"
-            name=""
-            id=""
-            cols={30}
-            rows={10}
-          ></textarea>
+          <InputGroup className="comment">
+            <InputGroup.Text>Comment</InputGroup.Text>
+            <Form.Control
+              placeholder="If you want to leave comment, you should sign in first"
+              className="txtArea"
+              as="textarea"
+              aria-label="With textarea"
+              onClick={() => {
+                if (!props.userCheck) {
+                  navigate("/signIn");
+                }
+              }}
+            />
+            <Button className="commentBtn" variant="success" id="button-addon2">
+              Click
+            </Button>
+          </InputGroup>
+          <div></div>
         </div>
         <div>{props.userCheck}</div>
       </div>
