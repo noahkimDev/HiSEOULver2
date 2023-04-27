@@ -33,6 +33,7 @@ function App() {
   // useParams 사용
   // usestate사용
   let [userCheck, setUserCheck] = useState("");
+  let [signinModal, setSigninModal] = useState("black-bg show-bg");
   axios
     .get("http://localhost:8081/auth/haveUserInfo", {
       withCredentials: true,
@@ -66,6 +67,10 @@ function App() {
             path="/exhibition/:id"
             element={<Click_culture></Click_culture>}
           />
+          <Route
+            path="/signIn"
+            element={<Signin2 name={signinModal}></Signin2>}
+          ></Route>
         </Routes>
       </>
     );

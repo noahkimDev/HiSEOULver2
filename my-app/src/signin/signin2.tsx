@@ -156,7 +156,14 @@ function Signin2(props: any) {
                     Sign in
                   </Button>
                   {"             "}
-                  <Button variant="outline-success" type="submit" size="lg">
+                  <Button
+                    variant="outline-success"
+                    type="submit"
+                    size="lg"
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  >
                     Close
                   </Button>
                 </div>
