@@ -12,6 +12,7 @@ const { checkLogIn } = require("./middlewares");
 
 const memberDb = require("../models/member");
 const exhibitionDb = require("../models/exhibition");
+const commentDb = require("../models/comment");
 
 const router = express.Router();
 const cors = require("cors");
@@ -27,8 +28,10 @@ router.post(
     failureRedirect: "/fail",
   }),
   (req: any, res: any) => {
+    console.log(req.user, "이거맞아");
     req.session.save(() => {
       // res.setHeader("Access-Control-Allow-Credentials", true);
+
       res.send("로그인 완료");
     });
   }
@@ -87,6 +90,46 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
   }
 });
 
+router.post("/auth/comment", async (req: any, res: any) => {
+  // const checkId = await memberDb.findOne({
+  //   where: { member_id: newId },
+  // });
+  console.log("작성한 내용", req.body);
+
+  const memberId = await memberDb.findOne({
+    where: { member_id: req.body.userId },
+  });
+
+  console.log("작성한 내용", memberId.id);
+
+  // commentDb.create({
+  //   comment: req.body.comment,
+  //   commenter: memberId.id,
+  //   contentName: req.body.contentName,
+  // });
+
+  res.send("성공");
+});
+
+router.post("/auth/bringComments", async (req: any, res: any) => {
+  console.log("look at this", req.body);
+  // let findMember = await memberDb.findOne({
+  //   where: {
+  //     member_id: req.body[0],
+  //   },
+  // });
+
+  // console.log("실험실험", findMember.id);
+
+  // commentDb.findAll({
+  //   where: {
+  //     contentName: req.body[1],
+  //     commenter: findMember.id,
+  //   },
+  // });
+  res.send("잠깐 대기");
+});
+
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
   let data = req.body;
 
@@ -115,10 +158,10 @@ router.get("/auth/haveUserInfo", (req: any, res: any) => {
 });
 
 router.post("/auth/logout", (req: any, res: any, next: any) => {
-  if (req.user.provider === "kakao") {
-    console.log("로그아웃 전", req.user);
-    console.log("잘들어왔어");
-  }
+  // if (req.user.provider === "kakao") {
+  //   console.log("로그아웃 전", req.user);
+  //   console.log("잘들어왔어");
+  // }
   req.logout(function (err: any) {
     if (err) {
       return next(err);

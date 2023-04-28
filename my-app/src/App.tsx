@@ -67,10 +67,10 @@ function App() {
             path="/exhibition/:id"
             element={<Click_culture></Click_culture>}
           />
-          <Route
+          {/* <Route
             path="/signIn"
             element={<Signin2 name={signinModal}></Signin2>}
-          ></Route>
+          ></Route> */}
         </Routes>
       </>
     );

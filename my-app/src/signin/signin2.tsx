@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 
 import kakaoBtn from "../img/kakao.png";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 // import { rememberMember } from "../store";
@@ -26,9 +26,9 @@ function Signin2(props: any) {
   let [memberInfo, setMemberInfo] = useState("");
   let [memberInfo2, setMemberInfo2] = useState("");
   let [show, setShow] = useState(true);
+  let [showModal, setShowModal] = useState(props.name);
 
   const exitSignin = () => setShow(false);
-
   async function checkMember() {
     let loginInfo = { memberId: id, memberPw: pw };
 
