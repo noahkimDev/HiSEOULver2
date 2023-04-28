@@ -5,9 +5,13 @@ module.exports = class Comment extends Sequelize.Model {
       {
         comment: {
           type: Sequelize.STRING(1000),
-          unique: true,
           allowNull: false,
         },
+        contentName: {
+          type: Sequelize.STRING(100),
+          allowNull: false,
+        },
+
         created_at: {
           type: Sequelize.DATE,
           allowNull: false,

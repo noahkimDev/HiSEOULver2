@@ -1,5 +1,7 @@
 import "./clickCulture.css";
 import Navbar2 from "../navbar/navbar2";
+import Signin2 from "../signin/signin2";
+
 import { useParams } from "react-router-dom";
 import Figure from "react-bootstrap/Figure";
 import Badge from "react-bootstrap/Badge";
@@ -17,7 +19,9 @@ import DetailMap from "./detailMap";
 
 function Click_culture(props: any) {
   const navigate = useNavigate();
+
   const { id }: any = useParams();
+  let [signInModal, setSignInModal] = useState("black-bg");
   let [title, setTitle] = useState("");
   let [fee, setFee] = useState("");
   let [phone, setPhone] = useState("");
@@ -26,7 +30,11 @@ function Click_culture(props: any) {
   let [explain, setExplain] = useState("");
   let [address, setAddress] = useState("");
   let [transportation, setTransportation] = useState("");
+  let [writtenComment, setWrittenComment] = useState("");
+
   let modifiedId = id.slice(0, id.indexOf("."));
+  // let data = [props.userCheck, modifiedId];
+  let [data, setData] = useState([props.userCheck, modifiedId]);
 
   axios
     .post(
@@ -52,7 +60,7 @@ function Click_culture(props: any) {
       {/* <Routes>
         <Route path="/festivals" element={<Festivals></Festivals>}></Route>
       </Routes> */}
-
+      <Signin2 name={signInModal}></Signin2>
       <Navbar2 user={props.userCheck}></Navbar2>
       <div className="example">
         <div className="upperSide">
@@ -120,16 +128,58 @@ function Click_culture(props: any) {
               className="txtArea"
               as="textarea"
               aria-label="With textarea"
-              onClick={() => {
+              onChange={function (e) {
+                e.preventDefault();
+                setWrittenComment(e.target.value);
+              }}
+              onClick={(e) => {
+                e.preventDefault();
                 if (!props.userCheck) {
-                  navigate("/signIn");
+                  // navigate("/signIn");
+                  setSignInModal("black-bg show-bg");
                 }
               }}
             />
-            <Button className="commentBtn" variant="success" id="button-addon2">
+            <Button
+              className="commentBtn"
+              variant="success"
+              id="button-addon2"
+              onClick={function (e) {
+                e.preventDefault();
+
+                if (props.userCheck) {
+                  let data = {
+                    userId: props.userCheck,
+                    comment: writtenComment,
+                    contentName: modifiedId,
+                  };
+                  axios
+                    .post("http://localhost:8081/auth/comment", data, {
+                      withCredentials: true,
+                    }) //
+                    .then((res) => {
+                      console.log(res.data);
+                    });
+                }
+              }}
+            >
               Click
             </Button>
           </InputGroup>
+          {/*
+          보내줄 데이터
+            1. 컨텐츠 hiseoudl1.jpg 등
+            2. 로그인 한 member 이름  
+           */}
+          {/* {
+            axios
+              .post("http://localhost:8081/auth/bringComments", data) //
+              .then((res) => {
+                console.log(res);
+                return <div>재</div>;
+              }) //
+          } */}
+          {/* <BringComments data={data}></BringComments> */}
           <div></div>
         </div>
         <div>{props.userCheck}</div>
@@ -138,10 +188,17 @@ function Click_culture(props: any) {
   );
 }
 
-// function Festivals() {
+// function BringComments(props: any) {
+//   //
+
+//   axios
+//     .post("http://localhost:8081/auth/bringComments", props.data) //
+//     .then((res) => {
+//       console.log(res);
+//     }); //
+
 //   return (
 //     <>
-//       {/* <Navbar2></Navbar2> */}
 //       <div className="example">gogo</div>
 //     </>
 //   );
