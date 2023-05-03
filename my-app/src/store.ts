@@ -10,25 +10,26 @@ interface Map {
   hospitaltype: string;
 }
 
-// const initialState: Map = { member: "" };
-const initialState: Map = { bigcity: "", smallcity: "", hospitaltype: "" };
+interface User {
+  member: string;
+}
 
-// const checkMember = createSlice({
-//   name: "login_member",
-//   initialState,
-//   reducers: {
-//     rememberMember: (state, action) => {
-//       state.member = action.payload;
-//     },
-//     removeMember: (state) => {
-//       state.member = "";
-//     },
-//   },
-// });
+const memberState: User = { member: "" };
+const initialState1: Map = { bigcity: "", smallcity: "", hospitaltype: "" };
+
+const checkMember = createSlice({
+  name: "login_member",
+  initialState: memberState,
+  reducers: {
+    rememberMember: (state, action) => {
+      state.member = action.payload;
+    },
+  },
+});
 
 const checkMapInfo = createSlice({
   name: "map_info",
-  initialState,
+  initialState: initialState1,
   reducers: {
     rememberBigCity: (state, action) => {
       state.bigcity = action.payload;
@@ -46,9 +47,11 @@ const checkMapInfo = createSlice({
 // export const { rememberMember, removeMember } = checkMember.actions;
 export const { rememberBigCity, rememberHospitalType, rememberSmallCity } =
   checkMapInfo.actions;
+
+export const { rememberMember } = checkMember.actions;
 export default configureStore({
   reducer: {
-    // checkMember: checkMember.reducer,
+    checkMember: checkMember.reducer,
     checkMapInfo: checkMapInfo.reducer,
   },
 });

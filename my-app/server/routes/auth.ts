@@ -90,6 +90,11 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
   }
 });
 
+router.delete("/auth/deleteComment/:id", async (req: any, res: any) => {
+  commentDb.destroy({ where: { id: req.params.id } });
+  // res.send("삭제 성공");
+});
+
 router.post("/auth/comment", async (req: any, res: any) => {
   // const checkId = await memberDb.findOne({
   //   where: { member_id: newId },
@@ -102,17 +107,18 @@ router.post("/auth/comment", async (req: any, res: any) => {
 
   console.log("작성한 내용", memberId.id);
 
-  // commentDb.create({
-  //   comment: req.body.comment,
-  //   commenter: memberId.id,
-  //   contentName: req.body.contentName,
-  // });
+  commentDb.create({
+    comment: req.body.comment,
+    commenter: memberId.id,
+    contentName: req.body.contentName,
+  });
 
   res.send("성공");
 });
 
 router.post("/auth/bringComments", async (req: any, res: any) => {
   console.log("look at this", req.body);
+
   // let findMember = await memberDb.findOne({
   //   where: {
   //     member_id: req.body[0],
@@ -121,13 +127,18 @@ router.post("/auth/bringComments", async (req: any, res: any) => {
 
   // console.log("실험실험", findMember.id);
 
-  // commentDb.findAll({
-  //   where: {
-  //     contentName: req.body[1],
-  //     commenter: findMember.id,
-  //   },
-  // });
-  res.send("잠깐 대기");
+  let go = await commentDb.findAll({
+    where: {
+      contentName: req.body.contentName,
+    },
+    include: [
+      {
+        model: memberDb,
+        attributes: ["member_id"],
+      },
+    ],
+  });
+  res.send(go);
 });
 
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
@@ -158,10 +169,6 @@ router.get("/auth/haveUserInfo", (req: any, res: any) => {
 });
 
 router.post("/auth/logout", (req: any, res: any, next: any) => {
-  // if (req.user.provider === "kakao") {
-  //   console.log("로그아웃 전", req.user);
-  //   console.log("잘들어왔어");
-  // }
   req.logout(function (err: any) {
     if (err) {
       return next(err);

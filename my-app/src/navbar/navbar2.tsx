@@ -17,7 +17,18 @@ import axios from "axios";
 import "./navbar2.css";
 
 const Navbar2 = (props: any) => {
+  const count = useSelector((state: any) => {
+    return state.checkMember.member;
+  });
+
+  console.log("카운터", count);
+
+  let [signupModal, setSignupModal] = useState("black-bg");
+  let [signinModal, setSigninModal] = useState("black-bg");
+  // let [rememberUser, setRememberUser] = useState("");
   //
+
+  console.log("확인해보자", props.user);
   const navigate = useNavigate();
   //
   async function logout() {
@@ -26,7 +37,6 @@ const Navbar2 = (props: any) => {
         withCredentials: true,
       }) //
       .then((res) => {
-        console.log("로그아웃 성공", res);
         navigate("/");
         window.location.reload();
       })
@@ -38,134 +48,87 @@ const Navbar2 = (props: any) => {
 
   // const checkSignin = useSelector((state: any) => state.checkMember.member);
   // console.log("바꼈", checkSignin);
-  let [signupModal, setSignupModal] = useState("black-bg");
-  let [signinModal, setSigninModal] = useState("black-bg");
+
   return (
     <>
       <Signin2 name={signinModal}></Signin2>
       <Signup2 name={signupModal}></Signup2>
 
-      <Navbar bg="white" expand="lg" className="navbar">
-        <Container>
-          <Navbar.Brand href="#home">HiSEOUL</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-          <div className="sign-btn">
-            <Nav>
-              <Nav.Link href="#home" className="mySeoul">
-                {props.user ? `${props.user} 님` : ""}
-              </Nav.Link>
-            </Nav>
-            {props.user ? (
-              <>
-                <Button className="btn" variant="outline-dark" onClick={logout}>
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <>
-                <Button
-                  className="btn"
-                  variant="outline-dark"
+      {props.user ? (
+        <Navbar bg="white" expand="lg" className="navbar">
+          <Container>
+            <Navbar.Brand href="#home">HiSEOUL</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link
+                  href="#home"
                   onClick={() => {
-                    setSigninModal("black-bg show-bg");
+                    navigate("/");
                   }}
                 >
-                  Sign In
-                </Button>
-                <Button
-                  variant="outline-success"
+                  Home
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+            <div className="sign-btn">
+              <Nav>
+                <Nav.Link href="#home" className="mySeoul">
+                  {props.user ? `${props.user} 님` : ""}
+                </Nav.Link>
+              </Nav>
+              <Button className="btn" variant="outline-dark" onClick={logout}>
+                Logout
+              </Button>
+            </div>
+          </Container>
+        </Navbar>
+      ) : (
+        <Navbar bg="white" expand="lg" className="navbar">
+          <Container>
+            <Navbar.Brand href="#home">HiSEOUL</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link
+                  href="#home"
                   onClick={() => {
-                    setSignupModal("black-bg show-bg");
+                    navigate("/");
                   }}
                 >
-                  Sign Up
-                </Button>
-              </>
-            )}
-            {/* <Button
-              className="btn"
-              variant="outline-dark"
-              onClick={() => {
-                setSigninModal("black-bg show-bg");
-              }}
-            >
-              Sign In
-            </Button>
-            <Button
-              variant="outline-success"
-              onClick={() => {
-                setSignupModal("black-bg show-bg");
-              }}
-            >
-              Sign Up
-            </Button>{" "} */}
-          </div>
-        </Container>
-      </Navbar>
+                  Home
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+            <div className="sign-btn">
+              <Nav>
+                <Nav.Link href="#home" className="mySeoul">
+                  {props.user ? `${props.user} 님` : ""}
+                </Nav.Link>
+              </Nav>
+              <Button
+                className="btn"
+                variant="outline-dark"
+                onClick={() => {
+                  setSigninModal("black-bg show-bg");
+                }}
+              >
+                Sign In
+              </Button>
+              <Button
+                variant="outline-success"
+                onClick={() => {
+                  setSignupModal("black-bg show-bg");
+                }}
+              >
+                Sign Up
+              </Button>
+            </div>
+          </Container>
+        </Navbar>
+      )}
     </>
   );
 };
-
-// const buttonChg = (props: any) => {
-//   let [signupModal, setSignupModal] = useState("black-bg");
-//   let [signinModal, setSigninModal] = useState("black-bg");
-
-//   if (props) {
-//     return (
-//       <>
-//         <Button
-//           className="btn"
-//           variant="outline-dark"
-//           onClick={() => {
-//             setSigninModal("black-bg show-bg");
-//           }}
-//         >
-//           Logout
-//         </Button>{" "}
-//       </>
-//     );
-//   } else {
-//     return (
-//       <>
-//         <Button
-//           className="btn"
-//           variant="outline-dark"
-//           onClick={() => {
-//             setSigninModal("black-bg show-bg");
-//           }}
-//         >
-//           Sign In
-//         </Button>{" "}
-//         <Button
-//           variant="outline-success"
-//           onClick={() => {
-//             setSignupModal("black-bg show-bg");
-//           }}
-//         >
-//           Sign Up
-//         </Button>{" "}
-//       </>
-//     );
-//   }
-// };
 
 export default Navbar2;
