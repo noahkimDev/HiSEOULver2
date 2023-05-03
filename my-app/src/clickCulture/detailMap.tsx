@@ -6,7 +6,6 @@ function DetailMap(props: any) {
   const [info, setInfo]: any = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap]: any = useState();
-  console.log("주소", props.address);
 
   useEffect(() => {
     if (!map) return;

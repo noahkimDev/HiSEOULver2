@@ -31,9 +31,9 @@ module.exports = class Comment extends Sequelize.Model {
     );
   }
   static associate(db: any) {
-    db.Member.hasMany(db.Comment, {
+    db.Comment.belongsTo(db.Member, {
       foreignKey: "commenter",
-      sourceKey: "id",
+      targetKey: "id",
     });
   }
 };

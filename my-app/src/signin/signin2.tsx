@@ -2,12 +2,10 @@ import "./signin2.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import kakaoBtn from "../img/kakao.png";
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-// import { rememberMember } from "../store";
+import { rememberMember } from "../store";
 // import {redirct}
 import { useNavigate, Link } from "react-router-dom";
 
@@ -21,12 +19,12 @@ function Signin2(props: any) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  let [removeModal, setRemoveModal] = useState("");
   let [id, setId] = useState("");
   let [pw, setPw] = useState("");
   let [memberInfo, setMemberInfo] = useState("");
   let [memberInfo2, setMemberInfo2] = useState("");
   let [show, setShow] = useState(true);
-  let [showModal, setShowModal] = useState(props.name);
 
   const exitSignin = () => setShow(false);
   async function checkMember() {
@@ -42,8 +40,11 @@ function Signin2(props: any) {
         console.log("서버로부터 응답 : ", res.data);
         if (res.data) {
           exitSignin();
-          navigate("/");
+          // navigate("/");
+          setRemoveModal("");
           window.location.reload();
+
+          dispatch(rememberMember("rmrm"));
         }
       })
       .catch((err) => {
@@ -52,48 +53,10 @@ function Signin2(props: any) {
       });
   }
 
-  async function kakaoLogin() {
-    await axios
-      .get("http://localhost:8081/auth/kakao", {
-        withCredentials: true,
-      }) //
-      .then((res) => {
-        // if (res) {
-        //   console.log("fsa", show);
-        //   exitSignin();
-        // }
-        console.log(res);
-      });
-    // const JS_APP_KEY = "5cffda1ee389a071d0ffa2e8731eb1a0";
-    // const REDIRECT_URI = "http://localhost:8081/auth/kakao/callback";
-    // const makeFormData = (params: any) => {
-    //   const searchParams = new URLSearchParams();
-    //   Object.keys(params).forEach((key) => {
-    //     searchParams.append(key, params[key]);
-    //   });
-
-    //   return searchParams;
-    // };
-    // return axios({
-    //   method: "GET",
-    //   headers: {
-    //     "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-    //     // "Access-Control-Allow-Origin": "http://localhost:3001",
-    //   },
-    //   url: "http://localhost:3001/auth/kakao",
-    //   data: makeFormData({
-    //     grant_type: "authorization_code",
-    //     client_id: JS_APP_KEY,
-    //     redirect_uri: REDIRECT_URI,
-    //     // code
-    //   }),
-    // });
-  }
-
   return (
     <>
       {show && (
-        <div className={props.name}>
+        <div className={removeModal === "" ? props.name : removeModal}>
           <div className="container">
             <div className="signin-frame">
               <h1 style={{ textAlign: "center" }}>Sign-in</h1>
@@ -161,7 +124,8 @@ function Signin2(props: any) {
                     type="submit"
                     size="lg"
                     onClick={() => {
-                      navigate("/");
+                      // navigate("/");
+                      setRemoveModal("black-bg show-bg");
                     }}
                   >
                     Close

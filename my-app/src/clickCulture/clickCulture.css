@@ -142,6 +142,21 @@ Chango&display=swap"); */
   border-radius: 10px;
 }
 
+.alertContainer {
+  margin: 0 auto;
+  justify-content: center;
+  width: 71%;
+  margin-bottom: 20px;
+}
+.alertBtn {
+  position: relative;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+.insideAlert {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 1733px) {
   /* .information-container div {
     width: 50%;

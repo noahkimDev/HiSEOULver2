@@ -4,11 +4,11 @@ import Signin2 from "../signin/signin2";
 
 import { useParams } from "react-router-dom";
 import Figure from "react-bootstrap/Figure";
-import Badge from "react-bootstrap/Badge";
+import Alert from "react-bootstrap/Alert";
+
 import axios from "axios";
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -18,9 +18,30 @@ import backgroundImg from "../img/6.png";
 import DetailMap from "./detailMap";
 
 function Click_culture(props: any) {
-  const navigate = useNavigate();
-
   const { id }: any = useParams();
+  let modifiedId = id.slice(0, id.indexOf("."));
+
+  function deleteComment(commentNum: any) {
+    axios.delete(`http://localhost:8081/auth/deleteComment/${commentNum}`);
+  }
+  function update() {
+    axios
+      .post(
+        "http://localhost:8081/auth/bringComments",
+        {
+          // memberName: data,
+          contentName: modifiedId,
+        },
+        {
+          withCredentials: true,
+        }
+      ) //
+      .then((res: any) => {
+        setAllComments(res.data);
+        console.log("let's go", res.data);
+      }); //
+  }
+
   let [signInModal, setSignInModal] = useState("black-bg");
   let [title, setTitle] = useState("");
   let [fee, setFee] = useState("");
@@ -32,45 +53,57 @@ function Click_culture(props: any) {
   let [transportation, setTransportation] = useState("");
   let [writtenComment, setWrittenComment] = useState("");
 
-  let modifiedId = id.slice(0, id.indexOf("."));
-  // let data = [props.userCheck, modifiedId];
-  let [data, setData] = useState([props.userCheck, modifiedId]);
+  let [allComments, setAllComments] = useState([]);
 
-  axios
-    .post(
-      "http://localhost:8081/auth/exhibition_detail",
-      { clickedEvent: modifiedId },
-      {
-        withCredentials: true,
-      }
-    )
-    .then((res) => {
-      console.log(res.data);
-      setTitle(res.data.event_name);
-      setFee(res.data.fee);
-      setPhone(res.data.phone);
-      setEvent_dates(res.data.event_dates);
-      setHoursOfOperation(res.data.hours_of_operation);
-      setExplain(res.data.explain);
-      setAddress(res.data.address);
-      setTransportation(res.data.transportation);
-    });
+  useEffect(() => {
+    axios
+      .post(
+        "http://localhost:8081/auth/bringComments",
+        {
+          contentName: modifiedId,
+        },
+        {
+          withCredentials: true,
+        }
+      ) //
+      .then((res: any) => {
+        setAllComments(res.data);
+        console.log("let's go", res.data);
+      }); //
+  }, [writtenComment]);
+
+  useEffect(() => {
+    axios
+      .post(
+        "http://localhost:8081/auth/exhibition_detail",
+        { clickedEvent: modifiedId },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setTitle(res.data.event_name);
+        setFee(res.data.fee);
+        setPhone(res.data.phone);
+        setEvent_dates(res.data.event_dates);
+        setHoursOfOperation(res.data.hours_of_operation);
+        setExplain(res.data.explain);
+        setAddress(res.data.address);
+        setTransportation(res.data.transportation);
+      });
+  }, []);
   return (
     <>
-      {/* <Routes>
-        <Route path="/festivals" element={<Festivals></Festivals>}></Route>
-      </Routes> */}
       <Signin2 name={signInModal}></Signin2>
       <Navbar2 user={props.userCheck}></Navbar2>
+
       <div className="example">
         <div className="upperSide">
-          {/* <Figure className="imgContainer"> */}
           <Figure.Image
             src={backgroundImg}
             className="upperSideImg"
           ></Figure.Image>
-          {/* <p className="upperSideTxt">MUST GO</p> */}
-          {/* </Figure> */}
         </div>
         <div className="lowerSideContainer">
           <div className="title">
@@ -127,12 +160,13 @@ function Click_culture(props: any) {
               placeholder="If you want to leave comment, you should sign in first"
               className="txtArea"
               as="textarea"
+              value={writtenComment}
               aria-label="With textarea"
               onChange={function (e) {
                 e.preventDefault();
                 setWrittenComment(e.target.value);
               }}
-              onClick={(e) => {
+              onClick={function (e) {
                 e.preventDefault();
                 if (!props.userCheck) {
                   // navigate("/signIn");
@@ -146,7 +180,7 @@ function Click_culture(props: any) {
               id="button-addon2"
               onClick={function (e) {
                 e.preventDefault();
-
+                setWrittenComment("");
                 if (props.userCheck) {
                   let data = {
                     userId: props.userCheck,
@@ -159,6 +193,7 @@ function Click_culture(props: any) {
                     }) //
                     .then((res) => {
                       console.log(res.data);
+                      update();
                     });
                 }
               }}
@@ -169,20 +204,41 @@ function Click_culture(props: any) {
           {/*
           보내줄 데이터
             1. 컨텐츠 hiseoudl1.jpg 등
-            2. 로그인 한 member 이름  
+            2. 로그인 한 member 이름    
            */}
-          {/* {
-            axios
-              .post("http://localhost:8081/auth/bringComments", data) //
-              .then((res) => {
-                console.log(res);
-                return <div>재</div>;
-              }) //
-          } */}
+          {allComments.map(
+            (e: any, i: any) =>
+              props.userCheck === e.Member.member_id ? (
+                <Alert key={i} variant="secondary" className="alertContainer">
+                  Member {e.Member.member_id}
+                  <Button
+                    variant="warning"
+                    size="sm"
+                    className="alertBtn"
+                    onClick={() => {
+                      // console.log(e.id);
+                      deleteComment(e.id);
+                      update();
+                    }}
+                  >
+                    delete
+                  </Button>
+                  {/* <button className="alertBtn">수정</button> */}
+                  {/* <button className="alertBtn">삭제</button> */}
+                  <Alert className="insideAlert">{e.comment}</Alert>
+                </Alert>
+              ) : (
+                <Alert key={i} variant="secondary" className="alertContainer">
+                  Member {e.Member.member_id}
+                  <Alert className="insideAlert">{e.comment}</Alert>
+                </Alert>
+              )
+
+            // <div key={i}>{e.comment}</div>
+          )}
           {/* <BringComments data={data}></BringComments> */}
           <div></div>
         </div>
-        <div>{props.userCheck}</div>
       </div>
     </>
   );

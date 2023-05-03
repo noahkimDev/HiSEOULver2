@@ -1,6 +1,6 @@
 /*eslint-disable*/
 
-import React from "react";
+import React, { useEffect } from "react";
 import wow from "./img/6.png";
 import yes from "./img/5.png";
 import korea from "./img/korea.png";
@@ -15,7 +15,6 @@ import Signup2 from "./signup/signup2";
 import Hospital from "./hospital/hospital";
 import Home from "./home";
 import Click_culture from "./clickCulture/clickCulture";
-
 import Icon from "./icon/icon";
 import axios from "axios";
 import { useState } from "react";
@@ -34,18 +33,21 @@ function App() {
   // usestate사용
   let [userCheck, setUserCheck] = useState("");
   let [signinModal, setSigninModal] = useState("black-bg show-bg");
-  axios
-    .get("http://localhost:8081/auth/haveUserInfo", {
-      withCredentials: true,
-    }) //
-    .then((info) => {
-      console.log(info.data.user);
-      if (info.data.user) {
-        setUserCheck(info.data.user.member_id);
-      } else {
-        setUserCheck("");
-      }
-    });
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8081/auth/haveUserInfo", {
+        withCredentials: true,
+      }) //
+      .then((info) => {
+        console.log(info.data.user);
+        if (info.data.user) {
+          setUserCheck(info.data.user.member_id);
+        } else {
+          setUserCheck("");
+        }
+      });
+  }, []);
   if (userCheck) {
     return (
       <>
