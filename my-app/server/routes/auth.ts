@@ -28,10 +28,9 @@ router.post(
     failureRedirect: "/fail",
   }),
   (req: any, res: any) => {
-    console.log(req.user, "이거맞아");
+    console.log(req.user, "이거맞아really?>");
     req.session.save(() => {
       // res.setHeader("Access-Control-Allow-Credentials", true);
-
       res.send("로그인 완료");
     });
   }

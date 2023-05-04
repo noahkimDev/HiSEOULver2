@@ -18,7 +18,7 @@ import "./navbar2.css";
 
 const Navbar2 = (props: any) => {
   const count = useSelector((state: any) => {
-    return state.checkMember.member;
+    return state.checkMember;
   });
 
   console.log("카운터", count);
@@ -37,7 +37,7 @@ const Navbar2 = (props: any) => {
         withCredentials: true,
       }) //
       .then((res) => {
-        navigate("/");
+        // navigate("/");
         window.location.reload();
       })
       .catch((err) => {

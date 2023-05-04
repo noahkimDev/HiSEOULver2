@@ -31,8 +31,8 @@ import "./App.css";
 function App() {
   // useParams 사용
   // usestate사용
-  let [userCheck, setUserCheck] = useState("");
   let [signinModal, setSigninModal] = useState("black-bg show-bg");
+  let [userCheck, setUserCheck] = useState(" ");
 
   useEffect(() => {
     axios
@@ -40,7 +40,7 @@ function App() {
         withCredentials: true,
       }) //
       .then((info) => {
-        console.log(info.data.user);
+        console.log("전진", info, info.data.user);
         if (info.data.user) {
           setUserCheck(info.data.user.member_id);
         } else {
@@ -51,6 +51,8 @@ function App() {
   if (userCheck) {
     return (
       <>
+        <Navbar2 user={userCheck}></Navbar2>
+
         <Routes>
           <Route path="/" element={<Home userCheck={userCheck}></Home>} />
           <Route
@@ -63,6 +65,8 @@ function App() {
   } else {
     return (
       <>
+        <Navbar2 user={userCheck}></Navbar2>
+
         <Routes>
           <Route path="/" element={<Home></Home>} />
           <Route

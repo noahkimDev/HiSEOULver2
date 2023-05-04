@@ -4,14 +4,13 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 //   member: string;
 // }
 
+interface User {
+  member: string;
+}
 interface Map {
   bigcity: string;
   smallcity: string;
   hospitaltype: string;
-}
-
-interface User {
-  member: string;
 }
 
 const memberState: User = { member: "" };
@@ -55,18 +54,3 @@ export default configureStore({
     checkMapInfo: checkMapInfo.reducer,
   },
 });
-// import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-// let user = createSlice({
-//   name: "이름",
-//   initialState: "값",
-// });
-
-// export default configureStore({
-//   reducer: {
-//     user: user.reducer,
-//   },
-// });
-// ...
-
-// typescript-redux
