@@ -4,21 +4,16 @@ import Form from "react-bootstrap/Form";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { rememberMember } from "../store";
-// import {redirct}
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-// import { Link } from "react-router-dom";
 function Signin2(props: any) {
-  // function useSelectorFunc() {
-  //   return useSelector((state: any) => {
-  //     return state.checkMember.member;
-  //   });
-  // }
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const count = useSelector((state: any) => {
+    return state.checkMember;
+  });
   let [removeModal, setRemoveModal] = useState("");
   let [id, setId] = useState("");
   let [pw, setPw] = useState("");
@@ -33,21 +28,23 @@ function Signin2(props: any) {
     await axios
       .post("http://localhost:8081/auth/signin", loginInfo, {
         withCredentials: true,
-      }) //
+      })
       .then((res) => {
+        console.log("노반응?", res);
+        console.log("서버로부터 응답 : ", res.data);
         // dispatch 사용안함
         // dispatch(rememberMember(res.data.member_info));
-        console.log("서버로부터 응답 : ", res.data);
         if (res.data) {
           exitSignin();
           // navigate("/");
           setRemoveModal("");
           window.location.reload();
-
-          dispatch(rememberMember("rmrm"));
+          // console.log("여기는", count);
+          dispatch(rememberMember(loginInfo.memberId));
+          console.log("다시", count);
         }
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         console.error(err);
         alert("you wrote the wrong information !!");
       });
