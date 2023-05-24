@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 function Typescriptmap(props: any) {
   const [cityChange, setcityChange] = useState([]);
-  const [hospitalTypeChg, setHospitalTypeChg] = useState();
 
   const [info, setInfo]: any = useState();
   const [markers, setMarkers]: any = useState([]);
@@ -15,12 +14,6 @@ function Typescriptmap(props: any) {
   const bigCity = mapInfo.bigcity.slice(0, mapInfo.bigcity.indexOf("("));
   const smallCity = mapInfo.smallcity;
   const hostpitalType = mapInfo.hospitaltype;
-  // const bigCity = props.userCity.bigcity.slice(0, mapInfo.bigcity.indexOf("("));
-
-  // console.log("질주", bigCity);
-  console.log("질주", mapInfo);
-  // setcityChange(bigCity);
-  // console.log("도시변경", cityChange);
 
   useEffect(() => {
     console.log("큰도시 바뀜");
@@ -72,7 +65,6 @@ function Typescriptmap(props: any) {
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
           }
           setMarkers(markers);
-
           // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
           map.setBounds(bounds);
         }

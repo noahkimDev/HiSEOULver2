@@ -4,7 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
 
 .example {
-  /* padding: 70px; */
   padding-top: 70px;
   width: 100%;
   height: 100vh;
@@ -14,10 +13,6 @@
   width: 100%;
   height: 40%;
 }
-/* .imgContainer {
-  width: 100%;
-  height: 100%;
-} */
 .upperSideImg {
   background-size: cover;
   width: 100%;
@@ -35,19 +30,12 @@
 }
 .lowerSideContainer {
   width: 100%;
-  /* height: 60%; */
 }
-/* 
-Smooch&display=swap");
-Lemon&display=swap");
-Sonsie+One&display=swap");
-Chango&display=swap"); */
 
 .title {
   width: 100%;
   text-align: center;
   background-color: orange;
-  /* padding: 15px; */
 }
 .title p {
   font-size: 30px;
@@ -57,7 +45,6 @@ Chango&display=swap"); */
   float: left;
   width: 40%;
   padding-right: 30px;
-  /* background-color: brown; */
 }
 
 .imgContent {
@@ -70,7 +57,6 @@ Chango&display=swap"); */
 .infoBox {
   float: right;
   width: 60%;
-  /* height: 100%; */
 }
 
 .txtContent {
@@ -80,8 +66,6 @@ Chango&display=swap"); */
 }
 
 .h1Content {
-  /* position: relative; */
-  /* margin: auto; */
   margin-bottom: 60px;
   width: 100%;
   height: 50px;
@@ -99,20 +83,14 @@ Chango&display=swap"); */
 .badgeTxt {
   width: 700px;
   padding: 10px;
-  /* background-color: brown; */
   float: left;
 }
 
 .detailInfo {
   margin: auto;
   margin-top: 100px;
-
-  /* height: 290px; */
   width: 100%;
-
   text-align: center;
-  /* background-color: bisque; */
-
   padding-left: 250px;
   padding-right: 250px;
 }
@@ -123,9 +101,7 @@ Chango&display=swap"); */
 }
 
 .commentContainer {
-  /* background-color: black; */
   width: 100%;
-  /* height: 300px; */
 }
 
 .comment {
@@ -133,7 +109,6 @@ Chango&display=swap"); */
   display: flex;
   justify-content: center;
   width: 75%;
-  /* height: 100%; */
   padding: 20px;
   font-size: 30px;
   border-radius: 10px;
@@ -158,13 +133,8 @@ Chango&display=swap"); */
 }
 
 @media screen and (max-width: 1733px) {
-  /* .information-container div {
-    width: 50%;
-  } */
   .imgBox {
     width: 100%;
-    /* float: left; */
-    /* width: 50%; */
     padding-right: 0px;
 
     display: flex;
@@ -187,8 +157,6 @@ Chango&display=swap"); */
   .h1Content {
     display: flex;
     justify-content: center;
-    /* position: relative; */
-    /* margin: auto; */
     margin-bottom: 80px;
     width: 100%;
     height: 50px;
@@ -196,20 +164,14 @@ Chango&display=swap"); */
   .detailInfo {
     margin: auto;
     margin-top: 90px;
-
-    /* height: 290px; */
     width: 100%;
-
     text-align: center;
-    /* background-color: bisque; */
-
     padding-left: 250px;
     padding-right: 250px;
   }
   .badgeTxt {
     width: 500px;
     padding: 10px;
-    /* background-color: brown; */
     float: left;
   }
 }

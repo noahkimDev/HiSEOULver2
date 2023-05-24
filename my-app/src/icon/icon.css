@@ -1,18 +1,11 @@
 .information-container {
   display: flex;
   flex-wrap: wrap;
-  /* float: left; */
   width: 80%;
   max-width: 1800px;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  /* height: 200px; */
-
-  /* background-color: antiquewhite; */
-  /* padding: auto;
-    padding-top: 70px;
-    padding-bottom: 30px; */
 }
 
 .information-container div {
@@ -20,8 +13,6 @@
   width: 25%;
   text-align: center;
   align-items: center;
-
-  /* margin-bottom: 40px; */
 }
 
 .information-container p {

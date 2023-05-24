@@ -8,7 +8,6 @@ import Icon from "./icon/icon";
 function Home(props: any) {
   return (
     <>
-      {/* <Navbar2 user={props.userCheck}></Navbar2> */}
       <SeoulPics></SeoulPics>
       <div style={{ clear: "both" }}></div>
 

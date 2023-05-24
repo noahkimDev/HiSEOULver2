@@ -13,7 +13,6 @@
   margin-top: 39px;
   width: 100%;
   height: 90%;
-  /* display: flex; */
 }
 .hospital {
   width: 100%;
@@ -27,7 +26,6 @@
   width: 100%;
   height: 85vh;
   border: 15px solid #6c757d;
-  /* border-color: ; */
 }
 
 .btn {
@@ -40,13 +38,11 @@
   background-color: white;
   overflow: scroll;
   padding: 10px;
-  /* display: none; */
 }
 
 .keyword-explanation {
   width: 100%;
   height: 100%;
-  /* display: none; */
   background-color: black;
 }
 

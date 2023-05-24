@@ -1,20 +1,17 @@
 import "./culture2.css";
 import "./myswiper.css";
 
-import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import Card from "react-bootstrap/Card";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Pagination, Navigation } from "swiper";
+import { Pagination } from "swiper";
 import { useNavigate } from "react-router-dom";
 
-import React, { useRef, useState, useEffect } from "react";
-import { url } from "inspector";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Culture() {
@@ -25,13 +22,10 @@ function Culture() {
           <Alert className="performance" variant="success">
             <p>Culture Performance</p>
           </Alert>
-          {/* <p>Culture</p> */}
         </div>
 
         <div className="culture-lower-frame">
           <div className="slide-container">
-            {/*slice-container*/}
-
             <div className="slide-container2 ">
               <BringCulture></BringCulture>
             </div>
@@ -44,15 +38,12 @@ function Culture() {
 
 function BringCulture() {
   const navigate = useNavigate();
-  const imgUrl = "../img/bringCultures/";
-  const [imgSrc, setImgSrc] = useState("");
   const [imgArray, setImgArray] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8081/auth/getList") //
       .then((res: any) => {
         setImgArray(res.data);
-        // setImgSrc(res);
       });
   }, []);
 
@@ -60,18 +51,15 @@ function BringCulture() {
   return (
     <>
       <Swiper
-        // slidesPerView={4}
         spaceBetween={30}
         pagination={{
           clickable: true,
         }}
         breakpoints={{
           1600: { slidesPerView: 4 },
-          // 800: { slidesPerView: 3 },
           1300: { slidesPerView: 3 },
           800: { slidesPerView: 2 },
         }}
-        // navigation={true}
         modules={[Pagination]}
         className="swiper"
       >
@@ -86,7 +74,6 @@ function BringCulture() {
                   }}
                 >
                   <div className="image-content">
-                    {/* <span className="overlay"></span> */}
                     <div className="card-image">
                       <img
                         src={require(`../img/bringCultures/${e}`)}

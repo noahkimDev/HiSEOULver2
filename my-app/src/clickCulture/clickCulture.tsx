@@ -8,12 +8,11 @@ import Alert from "react-bootstrap/Alert";
 
 import axios from "axios";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-// import backgroundImg from "../img/3.jpg";
 import backgroundImg from "../img/6.png";
 import DetailMap from "./detailMap";
 
@@ -169,7 +168,6 @@ function Click_culture(props: any) {
               onClick={function (e) {
                 e.preventDefault();
                 if (!props.userCheck) {
-                  // navigate("/signIn");
                   setSignInModal("black-bg show-bg");
                 }
               }}
@@ -206,58 +204,35 @@ function Click_culture(props: any) {
             1. 컨텐츠 hiseoudl1.jpg 등
             2. 로그인 한 member 이름    
            */}
-          {allComments.map(
-            (e: any, i: any) =>
-              props.userCheck === e.Member.member_id ? (
-                <Alert key={i} variant="secondary" className="alertContainer">
-                  Member {e.Member.member_id}
-                  <Button
-                    variant="warning"
-                    size="sm"
-                    className="alertBtn"
-                    onClick={() => {
-                      // console.log(e.id);
-                      deleteComment(e.id);
-                      update();
-                    }}
-                  >
-                    delete
-                  </Button>
-                  {/* <button className="alertBtn">수정</button> */}
-                  {/* <button className="alertBtn">삭제</button> */}
-                  <Alert className="insideAlert">{e.comment}</Alert>
-                </Alert>
-              ) : (
-                <Alert key={i} variant="secondary" className="alertContainer">
-                  Member {e.Member.member_id}
-                  <Alert className="insideAlert">{e.comment}</Alert>
-                </Alert>
-              )
-
-            // <div key={i}>{e.comment}</div>
+          {allComments.map((e: any, i: any) =>
+            props.userCheck === e.Member.member_id ? (
+              <Alert key={i} variant="secondary" className="alertContainer">
+                Member {e.Member.member_id}
+                <Button
+                  variant="outline-secondary"
+                  size="sm"
+                  className="alertBtn"
+                  onClick={() => {
+                    deleteComment(e.id);
+                    update();
+                  }}
+                >
+                  delete
+                </Button>
+                <Alert className="insideAlert">{e.comment}</Alert>
+              </Alert>
+            ) : (
+              <Alert key={i} variant="secondary" className="alertContainer">
+                Member {e.Member.member_id}
+                <Alert className="insideAlert">{e.comment}</Alert>
+              </Alert>
+            )
           )}
-          {/* <BringComments data={data}></BringComments> */}
           <div></div>
         </div>
       </div>
     </>
   );
 }
-
-// function BringComments(props: any) {
-//   //
-
-//   axios
-//     .post("http://localhost:8081/auth/bringComments", props.data) //
-//     .then((res) => {
-//       console.log(res);
-//     }); //
-
-//   return (
-//     <>
-//       <div className="example">gogo</div>
-//     </>
-//   );
-// }
 
 export default Click_culture;
