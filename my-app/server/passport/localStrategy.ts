@@ -20,7 +20,7 @@ module.exports = () => {
           const findData = await memberDb.findOne({
             where: { member_id: inputId },
           });
-          console.log(findData);
+          // console.log(findData);
 
           if (!findData) {
             // console.log(1, "없는 아이디");

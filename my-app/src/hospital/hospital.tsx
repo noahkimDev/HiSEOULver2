@@ -1,10 +1,8 @@
 import "./hospital.css";
+
 import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import React, { useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import Form from "react-bootstrap/Form";
 import { Address } from "./address";
 import { useSelector } from "react-redux";
 
@@ -13,8 +11,6 @@ import Typescriptmap from "./mapContainer";
 function Hospital() {
   const selector = useSelector((state: any) => state.checkMapInfo);
 
-  const [chooseCity, setChooseCity] = useState([]);
-  const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState("1");
 
   let [style1, setStyle1]: any = useState({ display: "block" });
@@ -25,7 +21,6 @@ function Hospital() {
       name: "Choose the area name you are living, and you can find out where hospitals are",
       value: "1",
     },
-    // { name: "keyword-explanation", value: "2" },
   ];
 
   return (
@@ -62,11 +57,9 @@ function Hospital() {
                 {radio.name}
               </ToggleButton>
             ))}
-            {/* </ButtonGroup> */}
           </div>
           <div className="explain">
             <div className="hospital-explanation" style={style1}>
-              {/* gf */}
               <Address></Address>
               <Typescriptmap userCity={selector}></Typescriptmap>
             </div>

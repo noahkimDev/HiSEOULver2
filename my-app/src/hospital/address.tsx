@@ -55,15 +55,7 @@ function Address() {
           await dispatch(rememberSmallCity(""));
         }}
       >
-        {
-          // listCity.map((e: any, index: number) => (
-          //   <option value={e} key={index}>
-          //     {e}
-          //   </option>
-          // )) //
-          <BigcityList></BigcityList>
-        }
-        {/* <option>Where are you living?</option> */}
+        {<BigcityList></BigcityList>}
       </Form.Select>
 
       <Form.Select
@@ -74,13 +66,6 @@ function Address() {
           await dispatch(rememberSmallCity(e.target.value));
         }}
       >
-        {/* {cityNameObj[choosedCity] &&
-          cityNameObj[choosedCity].map((e, i) => (
-            <option value={e} key={i}>
-              {e}
-            </option>
-          ))} */}
-
         <CityListDetail cityName={choosedCity}></CityListDetail>
       </Form.Select>
       <Form.Select
@@ -119,12 +104,6 @@ function BigcityList() {
 }
 
 function CityListDetail(props: any) {
-  // const arr = [...cityNameObj[props.cityName]];
-  // for (let key of Object.keys(cityNameObj)) {
-  //   if (key === props.cityName) {
-  //     cityNameObj.key.map((e, i) => console.log("afafss"));
-  //   }
-  // }
   let city = props.cityName;
   let city2 = city.slice(0, city.indexOf("("));
   return (

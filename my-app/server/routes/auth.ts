@@ -1,13 +1,8 @@
 // import App from "../../src/App";
 
-import { resolveTypeReferenceDirective } from "typescript";
-
 const express = require("express");
-const app = express();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const path = require("path");
-// const app1 = express1();
 const { checkLogIn } = require("./middlewares");
 
 const memberDb = require("../models/member");
@@ -15,11 +10,9 @@ const exhibitionDb = require("../models/exhibition");
 const commentDb = require("../models/comment");
 
 const router = express.Router();
-const cors = require("cors");
 const fs = require("fs");
 
 const directory = "../src/img/bringCultures";
-// app.set("");
 
 // 로그인
 router.post(
@@ -30,7 +23,6 @@ router.post(
   (req: any, res: any) => {
     console.log(req.user, "이거맞아really?>");
     req.session.save(() => {
-      // res.setHeader("Access-Control-Allow-Credentials", true);
       res.send("로그인 완료");
     });
   }
@@ -38,27 +30,13 @@ router.post(
 
 // 카카오 로그인
 router.get("/auth/kakao", passport.authenticate("kakao"));
-// router.post("/auth/kakao", (req: any, res: any) => {
-//   // res.redirect("/");
-//   res.send("그런데");
-// });
-
-// router.get("/", (req: any, res: any) => {
-//   // console.log("경로", path.join(__dirname, "../../src/App.tsx"));
-//   res.send("그렇구만 기래");
-//   // return res.render(path.join(__dirname, "../../src/App"));
-//   // return res.sendFile(path.join(__dirname, "../../src/culter/culture.css"));
-//   // res.render(App());
-// });
 
 router.use(
   "/auth/kakao/callback",
   passport.authenticate("kakao", { failureRedirect: "/fail" }),
   (req: any, res: any) => {
     console.log("헤더");
-    // res.send("kakao login success");
     res.redirect("http://localhost:3000");
-    // res.redirect("/auth/completeLogin");
   } //
 );
 
@@ -91,14 +69,10 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
 
 router.delete("/auth/deleteComment/:id", async (req: any, res: any) => {
   commentDb.destroy({ where: { id: req.params.id } });
-  // res.send("삭제 성공");
 });
 
 router.post("/auth/comment", async (req: any, res: any) => {
-  // const checkId = await memberDb.findOne({
-  //   where: { member_id: newId },
-  // });
-  console.log("작성한 내용", req.body);
+  // console.log("작성한 내용", req.body);
 
   const memberId = await memberDb.findOne({
     where: { member_id: req.body.userId },
@@ -118,13 +92,7 @@ router.post("/auth/comment", async (req: any, res: any) => {
 router.post("/auth/bringComments", async (req: any, res: any) => {
   console.log("look at this", req.body);
 
-  // let findMember = await memberDb.findOne({
-  //   where: {
-  //     member_id: req.body[0],
-  //   },
-  // });
-
-  // console.log("실험실험", findMember.id);
+  // console.log("test", findMember.id);
 
   let go = await commentDb.findAll({
     where: {
@@ -154,7 +122,6 @@ router.get("/auth/getList", (req: any, res: any) => {
   fs.readdir(directory, (err: any, files: any) => {
     if (err) {
       console.error(err);
-      console.log("에러");
       return;
     }
     console.log("성공");
@@ -176,20 +143,8 @@ router.post("/auth/logout", (req: any, res: any, next: any) => {
   console.log("로그아웃 후", req.user);
   res.clearCookie("connect.sid");
   res.send("logout");
-  // req.session.destroy(() => {
-  //   res.send("logout");
-  // });
-  // req.session.destroy((err: any) => {
-  //   if (err) {
-  //     console.log("에러났누");
-  //     return next(err);
-  //   }
-  //   res.clearCookie("connect.sid");
-  // });
 });
-// router.get("/wow", (req: any, res: any) => {
-//   console.log("이건성공");
-// });
+
 router.get("/auth/completeLogin", checkLogIn, (req: any, res: any) => {
   console.log("here we go!");
   // res.redirect(301, "http://localhost:3000");
@@ -197,7 +152,7 @@ router.get("/auth/completeLogin", checkLogIn, (req: any, res: any) => {
   // 여기서 로그인에 성공한 회원의 회원정보를 보내준다.
 });
 router.get("/mypage", checkLogIn, (req: any, res: any) => {
-  console.log("어디야 " + req.isAuthenticated());
+  console.log("check isAuthenticated" + req.isAuthenticated());
   res.send("good");
 });
 router.get("/fail", (req: any, res: any) => {

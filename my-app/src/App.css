@@ -2,10 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lemon&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
-/* body {
-  margin: 0;
-  padding: 0;
-} */
+
 .App {
   text-align: center;
 }
@@ -72,7 +69,6 @@
   font-size: 200px;
 }
 .main-background p {
-  /* font-size: 9em; */
   margin: 0;
   text-align: center;
   height: 100%;

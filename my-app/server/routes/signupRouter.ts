@@ -2,11 +2,10 @@ import { Request, Response } from "express";
 const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
-// const memberDb = require("./db/db.ts");
 const memberDb = require("../models/member");
 
 router.post("/", async (req: any, res: any, next: any) => {
-  console.log("여기보기", req.isAuthenticated());
+  // console.log("여기보기", req.isAuthenticated());
   const { newId, newPw } = req.body;
   try {
     const checkId = await memberDb.findOne({
@@ -23,10 +22,8 @@ router.post("/", async (req: any, res: any, next: any) => {
       member_id: newId,
       member_pw: hash,
     });
-    // return res.redirect("http://localhost:3000");
     return res.send("회원등록 성공");
   } catch (error) {
-    // console.error(error);
     return next(error);
   }
 });

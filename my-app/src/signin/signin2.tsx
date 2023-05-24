@@ -2,18 +2,14 @@ import "./signin2.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { rememberMember } from "../store";
-import { useNavigate } from "react-router-dom";
 
 function Signin2(props: any) {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const count = useSelector((state: any) => {
-    return state.checkMember;
-  });
+
   let [removeModal, setRemoveModal] = useState("");
   let [id, setId] = useState("");
   let [pw, setPw] = useState("");
@@ -30,18 +26,12 @@ function Signin2(props: any) {
         withCredentials: true,
       })
       .then((res) => {
-        console.log("노반응?", res);
-        console.log("서버로부터 응답 : ", res.data);
-        // dispatch 사용안함
-        // dispatch(rememberMember(res.data.member_info));
         if (res.data) {
           exitSignin();
           // navigate("/");
           setRemoveModal("");
           window.location.reload();
-          // console.log("여기는", count);
           dispatch(rememberMember(loginInfo.memberId));
-          console.log("다시", count);
         }
       })
       .catch((err: Error) => {
@@ -88,18 +78,7 @@ function Signin2(props: any) {
                 </Form.Group>
                 <div className="signin-button d-grid gap-3">
                   <a href="http://localhost:8081/auth/kakao">
-                    <Button
-                      className="kakaoSignin"
-                      // href="http://localhost:8081/auth/kakao"
-                      variant="warning"
-                      // type="submit"
-                      size="lg"
-                      // onClick={() => {
-                      // kakaoLogin();
-                      //   // navigate("/");
-                      //   // window.location.reload();
-                      // }}
-                    >
+                    <Button className="kakaoSignin" variant="warning" size="lg">
                       Kakao
                     </Button>
                   </a>

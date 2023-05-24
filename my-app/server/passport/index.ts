@@ -7,11 +7,11 @@ const memberDb = require("../models/member");
 
 module.exports = () => {
   passport.serializeUser((user: any, done: Function) => {
-    console.log("2");
+    // console.log("2");
     done(null, user.member_id); // 'id'라는 정보로 세션을 만들고 저장한다.
   });
 
-  // 이 세션데이터를 가진 사람을 DB에서 찾아주세요(마이페이 접속시 발동)
+  // 이 세션데이터를 가진 사람을 DB에서 찾아주세요(ex 마이페이 접속시 발동)
   passport.deserializeUser((member_id: any, done: any) => {
     console.log("deserializeUser", "3");
     memberDb

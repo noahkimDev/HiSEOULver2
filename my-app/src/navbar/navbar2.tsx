@@ -17,18 +17,9 @@ import axios from "axios";
 import "./navbar2.css";
 
 const Navbar2 = (props: any) => {
-  const count = useSelector((state: any) => {
-    return state.checkMember;
-  });
-
-  console.log("카운터", count);
-
   let [signupModal, setSignupModal] = useState("black-bg");
   let [signinModal, setSigninModal] = useState("black-bg");
-  // let [rememberUser, setRememberUser] = useState("");
-  //
 
-  console.log("확인해보자", props.user);
   const navigate = useNavigate();
   //
   async function logout() {
@@ -45,9 +36,6 @@ const Navbar2 = (props: any) => {
       });
   }
   //
-
-  // const checkSignin = useSelector((state: any) => state.checkMember.member);
-  // console.log("바꼈", checkSignin);
 
   return (
     <>
@@ -101,11 +89,6 @@ const Navbar2 = (props: any) => {
               </Nav>
             </Navbar.Collapse>
             <div className="sign-btn">
-              <Nav>
-                <Nav.Link href="#home" className="mySeoul">
-                  {props.user ? `${props.user} 님` : ""}
-                </Nav.Link>
-              </Nav>
               <Button
                 className="btn"
                 variant="outline-dark"
