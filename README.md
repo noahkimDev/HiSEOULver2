@@ -5,7 +5,7 @@
 - 외국인들을 위한 서울 가이드
 - 서울에 거주하는 외국인들을 대상으로 여행정보뿐만 아니라 생활필수정보를 제공
 - 1인 개발
-
+https://www.notion.so/fdb0a7cef1424cd18a78a715a096a359?pvs=4
 ## Stack
 <div>
   <h4>Front-End</h4>
