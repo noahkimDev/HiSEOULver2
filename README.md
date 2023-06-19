@@ -1,6 +1,3 @@
-![ezgif com-video-to-gif](https://github.com/noahkimDev/HiSEOUL/assets/68933325/75296d78-1635-4578-adfc-11cce77227b0)# HiSEOUL
-
-![facebook_cover_photo_2](https://user-images.githubusercontent.com/68933325/195326750-59b65e72-4abc-4354-a89b-b566a6fd157d.png)
 ## About
 - 외국인들을 위한 서울 가이드
 - 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공하고자 서비스를 기획하게 되었습니다.( 필요한 정보에 대한 수요를 직접 설문조사)
