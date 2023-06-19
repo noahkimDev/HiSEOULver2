@@ -1,3 +1,7 @@
+
+![logo_transparent 6](https://github.com/noahkimDev/HiSEOUL/assets/68933325/b7977c1d-9d75-4d4a-8f50-dc134a96868a)
+
+
 ## About
 - 외국인들을 위한 서울 가이드
 - 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공하고자 서비스를 기획하게 되었습니다.( 필요한 정보에 대한 수요를 직접 설문조사)
