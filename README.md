@@ -4,8 +4,7 @@
 ## About
 - 외국인들을 위한 서울 가이드
 - 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공 (직접 설문조사)
-  ![image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/d2e08c88-6b10-48ad-b299-3c5d916470af)
-
+https://docs.google.com/forms/d/163lVLolu1xNBKIajlCMqm5YXcEFwCgvSNT8tUt3xF98/edit#responses
 - 1인 개발
 
 ## Stack
