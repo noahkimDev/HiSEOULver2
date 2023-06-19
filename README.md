@@ -32,6 +32,7 @@
 링크 : https://bit.ly/4493vc1
 <img src="{file:///home/noah/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C/ezgif.com-video-to-gif.gif}"/>
 
+![검색](https://github.com/noahkimDev/HiSEOUL/assets/68933325/1a51816d-f865-44b8-8aff-dc6643851642)
 
 <p align="center">
   <img src="file:///home/noah/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C/%EB%B3%91%EC%9B%90%20%EC%B0%BE%EA%B8%B0.gif
