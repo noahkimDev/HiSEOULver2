@@ -1,5 +1,5 @@
 
-![facebook_profile_image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/10087cae-db96-4357-9c35-6511c985559c)
+![pinterest_profile_image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/fde90a59-87d7-4d07-8d01-9644b2ba0ca5)
 
 
 ## About
