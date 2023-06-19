@@ -30,7 +30,10 @@
 ## 기능시현
 
 링크 : https://bit.ly/4493vc1
-file:///home/noah/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C/%EB%B3%91%EC%9B%90%20%EC%B0%BE%EA%B8%B0.gif
+<p align="center">
+  <img src="file:///home/noah/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C/%EB%B3%91%EC%9B%90%20%EC%B0%BE%EA%B8%B0.gif
+">
+</p>
 
 
 
