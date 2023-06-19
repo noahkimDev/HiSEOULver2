@@ -3,7 +3,7 @@
 ![facebook_cover_photo_2](https://user-images.githubusercontent.com/68933325/195326750-59b65e72-4abc-4354-a89b-b566a6fd157d.png)
 ## About
 - 외국인들을 위한 서울 가이드
-- 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공 (직접 설문조사)
+- 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공하고자 서비스를 기획하게 되었습니다.( 필요한 정보에 대한 수요를 직접 설문조사)
 - 설문지 링크 : https://bit.ly/3p3nE4p
 - 1인 개발
 
@@ -31,7 +31,7 @@
 
 https://www.figma.com/file/7F5oXGAaG92w0u2rVt1ZWm/Untitled?node-id=0%3A1
 
-## 스키마
+## Database Scheme
 =======
 
 >>>>>>> e38867fbca40e089643569a0e58fc4a24e0998ba
