@@ -27,9 +27,11 @@
   <img src="https://img.shields.io/badge/sequelize-E95420?style=for-the-badge&logo=sequelize&logoColor=white">
 </div>  
 
-## 와이어프레임
+## 기능시현
 
-https://www.figma.com/file/7F5oXGAaG92w0u2rVt1ZWm/Untitled?node-id=0%3A1
+링크 : https://bit.ly/4493vc1
+[병원 찾기.webm](https://github.com/noahkimDev/HiSEOUL/assets/68933325/307d4911-a7ed-486e-9737-8eb28d7c60f6)
+
 
 ## Database Scheme
 =======
