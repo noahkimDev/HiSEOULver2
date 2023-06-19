@@ -4,7 +4,7 @@
 ## About
 - 외국인들을 위한 서울 가이드
 - 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공 (직접 설문조사)
-- https://docs.google.com/forms/d/163lVLolu1xNBKIajlCMqm5YXcEFwCgvSNT8tUt3xF98/edit?pli=1#responses
+- 설문지 링크 : https://docs.google.com/forms/d/163lVLolu1xNBKIajlCMqm5YXcEFwCgvSNT8tUt3xF98/edit?pli=1#responses
 - 1인 개발
 
 ## Stack
