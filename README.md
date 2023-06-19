@@ -30,6 +30,7 @@
 ## 기능시현
 
 링크 : https://bit.ly/4493vc1
+<img src="{file:///home/noah/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C/ezgif.com-video-to-gif.gif}"/>
 
 
 <p align="center">
