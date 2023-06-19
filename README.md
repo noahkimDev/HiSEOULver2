@@ -1,11 +1,11 @@
 # HiSEOUL
-<<<<<<< HEAD
+
 ![facebook_cover_photo_2](https://user-images.githubusercontent.com/68933325/195326750-59b65e72-4abc-4354-a89b-b566a6fd157d.png)
 ## About
 - 외국인들을 위한 서울 가이드
 - 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공
 - 1인 개발
-https://tundra-wasabi-457.notion.site/HiSEOUL-project-fe045cbf2dde4372a66dd4d5d4020af9
+
 ## Stack
 <div>
   <h4>Front-End</h4>
