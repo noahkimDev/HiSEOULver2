@@ -8,7 +8,6 @@
 - 1인 개발
 
 </br>
-
 ## Stack
 <div>
   <h4>Front-End</h4>
@@ -29,8 +28,7 @@
   <img src="https://img.shields.io/badge/sequelize-E95420?style=for-the-badge&logo=sequelize&logoColor=white">
 </div>  
 
-
-
+</br>
 ## 기능시현
 
 링크 : https://bit.ly/4493vc1
