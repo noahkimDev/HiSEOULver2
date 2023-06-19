@@ -1,5 +1,5 @@
 
-![logo_transparent 6](https://github.com/noahkimDev/HiSEOUL/assets/68933325/b7977c1d-9d75-4d4a-8f50-dc134a96868a)
+![logo](https://github.com/noahkimDev/HiSEOUL/assets/68933325/b9c67a2e-3eab-477e-934b-9c4e1db34820)
 
 
 ## About
