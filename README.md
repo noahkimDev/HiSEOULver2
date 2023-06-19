@@ -1,5 +1,6 @@
-
-![pinterest_profile_image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/fde90a59-87d7-4d07-8d01-9644b2ba0ca5)
+<div align="center">
+  ![pinterest_profile_image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/fde90a59-87d7-4d07-8d01-9644b2ba0ca5)
+</div>
 
 
 ## About
