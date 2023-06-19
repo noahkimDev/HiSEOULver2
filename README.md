@@ -1,6 +1,4 @@
-  ![pinterest_profile_image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/fde90a59-87d7-4d07-8d01-9644b2ba0ca5)
 ![facebook_cover_photo_2](https://github.com/noahkimDev/HiSEOUL/assets/68933325/1db005c6-99b4-4cf6-9ccd-1a0903d13ad1)
-
 
 ## About
 - 외국인들을 위한 서울 가이드
