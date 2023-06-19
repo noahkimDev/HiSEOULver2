@@ -7,6 +7,8 @@
 - 설문지 링크 : https://bit.ly/3p3nE4p
 - 1인 개발
 
+
+
 ## Stack
 <div>
   <h4>Front-End</h4>
@@ -26,6 +28,8 @@
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/sequelize-E95420?style=for-the-badge&logo=sequelize&logoColor=white">
 </div>  
+
+
 
 ## 기능시현
 
