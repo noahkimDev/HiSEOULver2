@@ -29,7 +29,7 @@
   <img src="https://img.shields.io/badge/sequelize-E95420?style=for-the-badge&logo=sequelize&logoColor=white">
 </div>  
 
-</br>
+</br></br>
 
 
 ## 기능시현
