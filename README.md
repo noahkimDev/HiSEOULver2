@@ -3,7 +3,9 @@
 ![facebook_cover_photo_2](https://user-images.githubusercontent.com/68933325/195326750-59b65e72-4abc-4354-a89b-b566a6fd157d.png)
 ## About
 - 외국인들을 위한 서울 가이드
-- 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공
+- 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공 (직접 설문조사)
+  ![image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/d2e08c88-6b10-48ad-b299-3c5d916470af)
+
 - 1인 개발
 
 ## Stack
