@@ -1,4 +1,4 @@
-# HiSEOUL
+![ezgif com-video-to-gif](https://github.com/noahkimDev/HiSEOUL/assets/68933325/75296d78-1635-4578-adfc-11cce77227b0)# HiSEOUL
 
 ![facebook_cover_photo_2](https://user-images.githubusercontent.com/68933325/195326750-59b65e72-4abc-4354-a89b-b566a6fd157d.png)
 ## About
@@ -30,8 +30,8 @@
 ## 기능시현
 
 링크 : https://bit.ly/4493vc1
-<img src="{file:///home/noah/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C/ezgif.com-video-to-gif.gif}"/>
 
+![Uploading ezgif.com-video-to-gif.gif…]()
 
 
 
