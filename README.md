@@ -33,7 +33,7 @@
 
 ## 기능시현
 
-모든 기능시현 링크 : https://bit.ly/4493vc1
+모든 기능시현 모음 링크 : https://bit.ly/4493vc1
 
 ![ezgif com-video-to-gif](https://github.com/noahkimDev/HiSEOUL/assets/68933325/f7684808-042c-4e52-9dd7-3e620dac7c0d)
 
