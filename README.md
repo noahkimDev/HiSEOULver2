@@ -30,7 +30,8 @@
 ## 기능시현
 
 링크 : https://bit.ly/4493vc1
-[병원 찾기.webm](https://github.com/noahkimDev/HiSEOUL/assets/68933325/307d4911-a7ed-486e-9737-8eb28d7c60f6)
+file:///home/noah/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C/%EB%B3%91%EC%9B%90%20%EC%B0%BE%EA%B8%B0.gif
+
 
 
 ## Database Scheme
