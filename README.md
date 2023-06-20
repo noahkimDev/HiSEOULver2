@@ -28,8 +28,7 @@
   <img src="https://img.shields.io/badge/sequelize-E95420?style=for-the-badge&logo=sequelize&logoColor=white">
 </div>  
 
-</br></br>
-
+</br>
 
 ## 기능시현
 
@@ -37,7 +36,7 @@
 
 ![ezgif com-video-to-gif](https://github.com/noahkimDev/HiSEOUL/assets/68933325/f7684808-042c-4e52-9dd7-3e620dac7c0d)
 
-</br></br>
+</br>
 
 ## Database Schema
 =======
