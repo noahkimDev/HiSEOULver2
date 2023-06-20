@@ -39,7 +39,7 @@
 
 </br></br>
 
-## Database Scheme
+## Database Schema
 =======
 
 >>>>>>> e38867fbca40e089643569a0e58fc4a24e0998ba
