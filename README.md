@@ -41,4 +41,5 @@
 ## Database Schema
 
 ![image](https://github.com/noahkimDev/HiSEOUL/assets/68933325/d18f98e1-9e71-49f1-98d7-01a24e9a63a9){: width="50%" height="50%"}
+<img src="https://github.com/noahkimDev/HiSEOUL/assets/68933325/d18f98e1-9e71-49f1-98d7-01a24e9a63a9">
 
