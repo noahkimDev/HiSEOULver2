@@ -9,6 +9,7 @@ const auth = require("./routes/auth");
 const morgan = require("morgan");
 const passport = require("passport");
 const session = require("express-session");
+const mysql = require("mysql2");
 
 dotenv1.config();
 const { sequelize } = require("./models/index");
@@ -67,5 +68,3 @@ app.use((err: any, req: any, res: any, next: any) => {
 app.listen(app.get("port"), function () {
   console.log("listening 8081");
 });
-
-export {};

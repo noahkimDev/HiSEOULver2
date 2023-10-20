@@ -32,7 +32,7 @@ function Signup2(props: any) {
         })
         .catch(function (error) {
           console.error(error);
-          // alert(`Sorry, this ID is already used`);
+          alert(`Sorry, this ID is already used`);
         });
 
       data.newId = "";
