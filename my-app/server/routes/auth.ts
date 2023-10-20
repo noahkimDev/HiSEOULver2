@@ -8,11 +8,19 @@ const { checkLogIn } = require("./middlewares");
 const memberDb = require("../models/member");
 const exhibitionDb = require("../models/exhibition");
 const commentDb = require("../models/comment");
+const connection = require("../db/db");
 
 const router = express.Router();
 const fs = require("fs");
 
 const directory = "../src/img/bringCultures";
+
+// connection.query(
+//   "SELECT * FROM members",
+//   function (err: Error, result: any, field: any) {
+//     console.log(result[0], "안녕");
+//   }
+// );
 
 // 로그인
 router.post(
@@ -44,22 +52,33 @@ router.use(
 router.post("/auth/signup", async (req: any, res: any, next: any) => {
   console.log("여기보기", req.isAuthenticated());
   const { newId, newPw } = req.body;
+  console.log(newId, newPw);
   try {
-    const checkId = await memberDb.findOne({
-      where: { member_id: newId },
-    });
-
-    if (checkId) {
-      return res.status(403).json("Sorry, this id is already used");
-    }
-    // 숫자(12)가 높아질수록 => 더 복잡해짐
-    const hash = await bcrypt.hash(newPw, 12);
-    // console.log(`hash : ${hash}`);
-    memberDb.create({
-      member_id: newId,
-      member_pw: hash,
-    });
-    return res.send("회원등록 성공");
+    //mysql
+    await connection.query(
+      `SELECT * FROM members2 WHERE member_id='${newId}'`,
+      async function (err: Error, results: any[], fields: any) {
+        if (err) {
+          console.log(err);
+          return res.status(403).json("Sorry, query error happened");
+        }
+        if (results[0]) {
+          console.log("여기로?");
+          return res.status(403).json("Sorry, this id is already used");
+        } else {
+          console.log("혹시?");
+          // 숫자(12)가 높아질수록 => 더 복잡해짐
+          const hash = await bcrypt.hash(newPw, 12);
+          connection.query(
+            `INSERT INTO members2(member_id, member_pw) VALUES('${newId}','${hash}')`,
+            function (err: any, result: any[], fields: any) {
+              console.log("회원가입 완료");
+              return res.status(200).send("회원가입 완료");
+            }
+          );
+        }
+      }
+    );
   } catch (error) {
     console.error(error);
     return next(error);
