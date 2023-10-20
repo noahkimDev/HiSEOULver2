@@ -21,7 +21,6 @@ router.post(
     failureRedirect: "/fail",
   }),
   (req: any, res: any) => {
-    console.log(req.user, "이거맞아really?>");
     req.session.save(() => {
       res.send("로그인 완료");
     });

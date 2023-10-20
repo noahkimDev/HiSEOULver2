@@ -9,6 +9,7 @@ const auth = require("./routes/auth");
 const morgan = require("morgan");
 const passport = require("passport");
 const session = require("express-session");
+const mysql = require("mysql2");
 
 dotenv1.config();
 const { sequelize } = require("./models/index");
@@ -38,6 +39,21 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+const connection = mysql.createConnection({
+  host: process.env.HOST,
+  user: process.env.USERNAME1,
+  password: process.env.PASSWORD,
+  database: process.env.SIGNUPDB,
+});
+
+connection.connect((err: Error) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("db-mysql 연결성공");
+  }
+});
 
 sequelize
   .sync({ alert: true })
