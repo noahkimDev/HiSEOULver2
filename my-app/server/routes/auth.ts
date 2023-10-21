@@ -50,7 +50,7 @@ router.use(
 //변경사항
 // 회원가입
 router.post("/auth/signup", async (req: any, res: any, next: any) => {
-  console.log("여기보기", req.isAuthenticated());
+  // console.log(req.isAuthenticated());
   const { newId, newPw } = req.body;
   console.log(newId, newPw);
   try {
@@ -62,7 +62,22 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
           return res.status(403).json("Sorry, query error happened");
         }
         if (results[0]) {
-          return res.status(403).json("Sorry, this id is already used");
+          //1 일단 아이디는 중복됨
+          //2 비번 중복을 확인하자
+          let checkBcrypt = await bcrypt.compare(newPw, results[0].member_pw);
+          if (checkBcrypt) {
+            return res
+              .status(403)
+              .json("Sorry, this signup info is already used");
+          } else {
+            const hash = await bcrypt.hash(newPw, 12);
+            connection.query(
+              `INSERT INTO members2(member_id, member_pw) VALUES('${newId}','${hash}')`,
+              function (err: Error, result: any[], fields: any) {
+                return res.status(200).send("회원가입 완료");
+              }
+            );
+          }
         } else {
           // 숫자(12)가 높아질수록 => 더 복잡해짐
           const hash = await bcrypt.hash(newPw, 12);
