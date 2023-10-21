@@ -59,20 +59,16 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
       `SELECT * FROM members2 WHERE member_id='${newId}'`,
       async function (err: Error, results: any[], fields: any) {
         if (err) {
-          console.log(err);
           return res.status(403).json("Sorry, query error happened");
         }
         if (results[0]) {
-          console.log("여기로?");
           return res.status(403).json("Sorry, this id is already used");
         } else {
-          console.log("혹시?");
           // 숫자(12)가 높아질수록 => 더 복잡해짐
           const hash = await bcrypt.hash(newPw, 12);
           connection.query(
             `INSERT INTO members2(member_id, member_pw) VALUES('${newId}','${hash}')`,
             function (err: any, result: any[], fields: any) {
-              console.log("회원가입 완료");
               return res.status(200).send("회원가입 완료");
             }
           );
