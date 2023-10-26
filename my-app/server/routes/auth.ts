@@ -9,12 +9,12 @@ const memberDb = require("../models/member");
 const exhibitionDb = require("../models/exhibition");
 const commentDb = require("../models/comment");
 const connection = require("../db/db");
+const signin = require("../passport/signin");
 
 const router = express.Router();
 const fs = require("fs");
 
 const directory = "../src/img/bringCultures";
-
 // connection.query(
 //   "SELECT * FROM members",
 //   function (err: Error, result: any, field: any) {
@@ -23,18 +23,20 @@ const directory = "../src/img/bringCultures";
 // );
 
 // 로그인
-router.post(
-  "/auth/signin",
-  passport.authenticate("local", {
-    failureRedirect: "/fail",
-  }),
-  (req: any, res: any) => {
-    req.session.save(() => {
-      res.send("로그인 완료");
-    });
-  }
-);
+// router.post(
+//   "/auth/signin",
+//   passport.authenticate("local", {
+//     failureRedirect: "/fail",
+//   }),
+//   (req: any, res: any) => {
+//     req.session.save(() => {
+//       res.send("로그인 완료");
+//     });
+//   }
+// );
 
+// 로그인
+router.post("/auth/signin", signin);
 // 카카오 로그인
 router.get("/auth/kakao", passport.authenticate("kakao"));
 
@@ -52,63 +54,51 @@ router.use(
 router.post("/auth/signup", async (req: any, res: any, next: any) => {
   // console.log(req.isAuthenticated());
   const { newId, newPw } = req.body;
-  console.log(newId, newPw);
+
+  console.log(connection, "가자");
+
+  // let yes = connection
+  //   .query(`SELECT * FROM members2 WHERE member_id='${newId}'`)
+  //   .then(([rows, fields]: any) => {
+  //     console.log(rows);
+  //   });
+  // console.log(yes);
+
   try {
     //mysql
-    await connection.query(
-      `SELECT * FROM members2 WHERE member_id='${newId}'`,
-      async function (err: Error, results: any[], fields: any) {
-        if (err) {
-          return res.status(403).json("Sorry, query error happened");
-        }
-
+    connection
+      .query(`SELECT * FROM members2 WHERE member_id='${newId}'`)
+      .then(async ([results, fields]: any) => {
         if (results[0]) {
-          //1 일단 아이디는 중복됨
-          //2 비번 중복을 확인하자
-          let checkBcrypt: Boolean;
-
-          async function checkPw() {
-            for (let i = 0; i < results.length; i++) {
-              checkBcrypt = await bcrypt.compare(newPw, results[i].member_pw);
-              if (checkBcrypt) {
-                break;
-              }
-            }
-            console.log(checkBcrypt, "확인작업");
+          let checkBcrypt: Boolean = false;
+          for (let i = 0; i < results.length; i++) {
+            checkBcrypt = await bcrypt.compare(newPw, results[i].member_pw);
             if (checkBcrypt) {
-              return res
-                .status(403)
-                .json("Sorry, this signup info is already used");
-            } else {
-              const hash = await bcrypt.hash(newPw, 12);
-              connection.query(
-                `INSERT INTO members2(member_id, member_pw) VALUES('${newId}','${hash}')`,
-                function (err: Error, result: any[], fields: any) {
-                  return res.status(200).send("회원가입 완료");
-                }
-              );
+              break;
             }
           }
-          await checkPw();
 
-          //here
-        } else {
-          // 숫자(12)가 높아질수록 => 더 복잡해짐
-          async function signUp() {
+          if (checkBcrypt) {
+            return res
+              .status(403)
+              .json("Sorry, this signup info is already used");
+          } else {
             const hash = await bcrypt.hash(newPw, 12);
-            connection.query(
-              `INSERT INTO members2(member_id, member_pw) VALUES('${newId}','${hash}')`,
-              function (err: any, result: any[], fields: any) {
-                return res.status(200).send("회원가입 완료");
-              }
+            await connection.query(
+              `INSERT INTO members2(member_id, member_pw) VALUES('${newId}','${hash}')`
             );
+            return res.status(200).send("회원가입 완료");
           }
-
-          signUp();
+        } else {
+          //   // 숫자(12)가 높아질수록 => 더 복잡해짐
+          const hash = await bcrypt.hash(newPw, 12);
+          await connection.query(
+            `INSERT INTO members2(member_id, member_pw) VALUES('${newId}','${hash}')`
+          );
+          return res.status(200).send("회원가입 완료");
         }
-        //here
-      }
-    );
+        // connection.releaseConnection(conn);
+      });
   } catch (error) {
     console.error(error);
     return next(error);
@@ -176,6 +166,7 @@ router.get("/auth/getList", (req: any, res: any) => {
     res.send(files);
   });
 });
+
 // 최초 접속 시 로그인 유무 확인하는 코드
 router.get("/auth/haveUserInfo", (req: any, res: any) => {
   console.log(1, req.isAuthenticated());
@@ -199,10 +190,12 @@ router.get("/auth/completeLogin", checkLogIn, (req: any, res: any) => {
   res.json({ message: "로그인 성공", member_info: req.user.member_id });
   // 여기서 로그인에 성공한 회원의 회원정보를 보내준다.
 });
+
 router.get("/mypage", checkLogIn, (req: any, res: any) => {
   console.log("check isAuthenticated" + req.isAuthenticated());
   res.send("good");
 });
+
 router.get("/fail", (req: any, res: any) => {
   res.status(404).send("fail");
 });
