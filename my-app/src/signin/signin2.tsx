@@ -103,7 +103,8 @@ function Signin2(props: any) {
                     onClick={function (e) {
                       // navigate("/");
                       e.preventDefault();
-                      setRemoveModal("black-bg show-bg");
+                      setRemoveModal("black-bg");
+                      // setRemoveModal("black-bg show-bg");
                     }}
                   >
                     Close

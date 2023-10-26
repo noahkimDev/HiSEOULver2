@@ -110,7 +110,9 @@ router.delete("/auth/deleteComment/:id", async (req: any, res: any) => {
 });
 
 router.post("/auth/comment", async (req: any, res: any) => {
-  // console.log("작성한 내용", req.body);
+  connection.query().then(([results, fields]: any) => {});
+
+  console.log("작성한 내용", req.body);
 
   const memberId = await memberDb.findOne({
     where: { member_id: req.body.userId },
@@ -123,6 +125,8 @@ router.post("/auth/comment", async (req: any, res: any) => {
     commenter: memberId.id,
     contentName: req.body.contentName,
   });
+
+  connection.query(`INSERT INTO comments() VALUES()`);
 
   res.send("성공");
 });

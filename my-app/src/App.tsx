@@ -21,9 +21,7 @@ function App() {
         withCredentials: true,
       }) // 왜 info에 아무 데이터도 오지않을까?
       .then(async (info) => {
-        console.log(info, "가즈아ss");
         if (info.data.user) {
-          console.log("스물스물");
           await setUserCheck(info.data.user.member_id);
         } else {
           await setUserCheck("");
