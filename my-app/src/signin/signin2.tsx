@@ -20,22 +20,23 @@ function Signin2(props: any) {
   const exitSignin = () => setShow(false);
   async function checkMember() {
     let loginInfo = { memberId: id, memberPw: pw };
-
+    // console.log(loginInfo);
     await axios
       .post("http://localhost:8081/auth/signin", loginInfo, {
         withCredentials: true,
       })
       .then((res) => {
         if (res.data) {
+          // console.log("가입성공!", res.data);
           exitSignin();
-          // navigate("/");
+          // // navigate("/");
           setRemoveModal("");
           window.location.reload();
           dispatch(rememberMember(loginInfo.memberId));
         }
       })
       .catch((err: Error) => {
-        console.error(err);
+        console.log(err);
         alert("you wrote the wrong information !!");
       });
   }
@@ -99,8 +100,9 @@ function Signin2(props: any) {
                     variant="outline-success"
                     type="submit"
                     size="lg"
-                    onClick={() => {
+                    onClick={function (e) {
                       // navigate("/");
+                      e.preventDefault();
                       setRemoveModal("black-bg show-bg");
                     }}
                   >

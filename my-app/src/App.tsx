@@ -19,15 +19,18 @@ function App() {
     axios
       .get("http://localhost:8081/auth/haveUserInfo", {
         withCredentials: true,
-      }) //
-      .then((info) => {
+      }) // 왜 info에 아무 데이터도 오지않을까?
+      .then(async (info) => {
+        console.log(info, "가즈아ss");
         if (info.data.user) {
-          setUserCheck(info.data.user.member_id);
+          console.log("스물스물");
+          await setUserCheck(info.data.user.member_id);
         } else {
-          setUserCheck("");
+          await setUserCheck("");
         }
       });
   }, []);
+
   if (userCheck) {
     return (
       <>

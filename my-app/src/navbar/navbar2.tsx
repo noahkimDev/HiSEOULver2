@@ -17,6 +17,7 @@ import axios from "axios";
 import "./navbar2.css";
 
 const Navbar2 = (props: any) => {
+  console.log("이놈이 이거", props);
   let [signupModal, setSignupModal] = useState("black-bg");
   let [signinModal, setSigninModal] = useState("black-bg");
 

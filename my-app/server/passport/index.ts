@@ -4,21 +4,31 @@ const passport = require("passport");
 const local = require("./localStrategy");
 const kakao = require("./kakaoStrategy");
 const memberDb = require("../models/member");
+const connection = require("../db/db");
 
 module.exports = () => {
-  passport.serializeUser((user: any, done: Function) => {
-    // console.log("2");
-    done(null, user.member_id); // 'id'라는 정보로 세션을 만들고 저장한다.
+  passport.serializeUser((user: any, done: any) => {
+    console.log("시리얼", user.member_id);
+    done(null, user); // 'id'라는 정보로 세션을 만들고 저장한다.
   });
 
   // 이 세션데이터를 가진 사람을 DB에서 찾아주세요(ex 마이페이 접속시 발동)
-  passport.deserializeUser((member_id: any, done: any) => {
-    console.log("deserializeUser", "3");
-    memberDb
-      .findOne({ where: { member_id } }) //
-      .then((user: any) => done(null, user)) //
-      .catch((err: any) => done(err));
+  // req.isAuthenticated()가 false가 나온다면 여기를 보자
+
+  passport.deserializeUser((user: any, done: any) => {
+    console.log("deserializeUser", "3", user.member_id);
+    try {
+      done(null, user);
+    } catch (error) {
+      console.log(error);
+      done(error);
+    }
+    // memberDb
+    //   .findOne({ where: { member_id } }) //
+    //   .then((user: any) => done(null, user)) //
+    //   .catch((err: any) => done(err));
   });
+
   kakao();
   local();
 };
