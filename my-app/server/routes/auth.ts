@@ -44,7 +44,7 @@ router.use(
   "/auth/kakao/callback",
   passport.authenticate("kakao", { failureRedirect: "/fail" }),
   (req: any, res: any) => {
-    console.log("헤더");
+    // console.log("헤더");
     res.redirect("http://localhost:3000");
   } //
 );
@@ -106,27 +106,28 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
 });
 
 router.delete("/auth/deleteComment/:id", async (req: any, res: any) => {
-  commentDb.destroy({ where: { id: req.params.id } });
+  console.log(req.params.id, "댓글번호");
+  // commentDb.destroy({ where: { id: req.params.id } });
+  connection.query(`DELETE FROM comments2 WHERE id='${req.params.id}'`); //
 });
 
 router.post("/auth/comment", async (req: any, res: any) => {
-  connection.query().then(([results, fields]: any) => {});
+  console.log("작성한 내용1", req.body);
 
-  console.log("작성한 내용", req.body);
+  // const memberId = await memberDb.findOne({
+  //   where: { member_id: req.body.userId },
+  // });
 
-  const memberId = await memberDb.findOne({
-    where: { member_id: req.body.userId },
-  });
+  // commentDb.create({
+  //   comment: req.body.comment,
+  //   commenter: memberId.id,
+  //   contentName: req.body.contentName,
+  // });
 
-  console.log("작성한 내용", memberId.id);
-
-  commentDb.create({
-    comment: req.body.comment,
-    commenter: memberId.id,
-    contentName: req.body.contentName,
-  });
-
-  connection.query(`INSERT INTO comments() VALUES()`);
+  await connection.query(
+    `INSERT INTO comments2(comment, contentName, commenter) 
+    VALUES('${req.body.comment}','${req.body.contentName}',${req.body.idNum})`
+  );
 
   res.send("성공");
 });
@@ -136,18 +137,30 @@ router.post("/auth/bringComments", async (req: any, res: any) => {
 
   // console.log("test", findMember.id);
 
-  let go = await commentDb.findAll({
-    where: {
-      contentName: req.body.contentName,
-    },
-    include: [
-      {
-        model: memberDb,
-        attributes: ["member_id"],
-      },
-    ],
-  });
-  res.send(go);
+  // let go = await commentDb.findAll({
+  //   where: {
+  //     contentName: req.body.contentName,
+  //   },
+  //   include: [
+  //     {
+  //       model: memberDb,
+  //       attributes: ["member_id"],
+  //     },
+  //   ],
+  // });
+
+  await connection
+    .query(
+      `SELECT * FROM members2 
+      JOIN comments2 
+      ON members2.id=comments2.commenter 
+      WHERE contentName='${req.body.contentName}'`
+    )
+    .then(([results, fields]: any) => {
+      console.log("리졸트", results);
+      res.send(results);
+    });
+  // res.send(go);
 });
 
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
