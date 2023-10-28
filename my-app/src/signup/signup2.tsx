@@ -4,8 +4,11 @@ import Form from "react-bootstrap/Form";
 // import Toast from "react-bootstrap/Toast";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Signup2(props: any) {
+  const navigate = useNavigate();
+
   let [id, setId] = useState("");
   let [pw, setPw] = useState("");
   let [check, setCheckpw] = useState("");

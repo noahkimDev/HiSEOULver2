@@ -47,7 +47,7 @@ function BringCulture() {
       });
   }, []);
 
-  console.log("배열", imgArray);
+  // console.log("배열", imgArray);
   return (
     <>
       <Swiper

@@ -26,7 +26,6 @@ module.exports = () => {
                   message: "존재하지 않는 아이디입니다",
                 });
               } else {
-                console.log("맞누");
                 type compare = [boolean, number];
                 let comparePassword: compare = [false, 0];
                 for (let i = 0; i < results.length; i++) {
@@ -35,7 +34,6 @@ module.exports = () => {
                     results[i].member_pw
                   );
                   if (numCompare) {
-                    console.log("이건?");
                     comparePassword = [numCompare, i];
                     break;
                   } else {
@@ -45,7 +43,6 @@ module.exports = () => {
                 if (comparePassword[0]) {
                   // 여기까지 작동
                   // 회원정보 일치
-                  console.log("가즈아");
                   return done(null, results[comparePassword[1]]);
                 } else {
                   console.log("비번틀림");
