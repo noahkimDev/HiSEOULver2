@@ -5,10 +5,12 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { rememberMember } from "../store";
 
 function Signin2(props: any) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   let [removeModal, setRemoveModal] = useState("");
   let [id, setId] = useState("");
@@ -101,9 +103,11 @@ function Signin2(props: any) {
                     type="submit"
                     size="lg"
                     onClick={function (e) {
-                      // navigate("/");
                       e.preventDefault();
                       setRemoveModal("black-bg");
+
+                      navigate("/");
+                      window.location.reload();
                       // setRemoveModal("black-bg show-bg");
                     }}
                   >

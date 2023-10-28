@@ -14,7 +14,7 @@ function App() {
   // usestate사용
   let [signinModal, setSigninModal] = useState("black-bg show-bg");
   let [userCheck, setUserCheck] = useState("");
-
+  let [userIdNum, setUserIdNum] = useState("");
   useEffect(() => {
     axios
       .get("http://localhost:8081/auth/haveUserInfo", {
@@ -22,13 +22,14 @@ function App() {
       }) // 왜 info에 아무 데이터도 오지않을까?
       .then(async (info) => {
         if (info.data.user) {
+          // await setUserCheck(info.data.user.member_id);
           await setUserCheck(info.data.user.member_id);
+          await setUserIdNum(info.data.user.id);
         } else {
           await setUserCheck("");
         }
       });
   }, []);
-
   if (userCheck) {
     return (
       <>
@@ -38,7 +39,12 @@ function App() {
           <Route path="/" element={<Home userCheck={userCheck}></Home>} />
           <Route
             path="/exhibition/:id"
-            element={<Click_culture userCheck={userCheck}></Click_culture>}
+            element={
+              <Click_culture
+                userCheck={userCheck}
+                userIdNum={userIdNum}
+              ></Click_culture>
+            }
           ></Route>
         </Routes>
       </>

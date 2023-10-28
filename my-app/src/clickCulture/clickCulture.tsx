@@ -20,6 +20,7 @@ function Click_culture(props: any) {
   const { id }: any = useParams();
   let modifiedId = id.slice(0, id.indexOf("."));
 
+  //댓글 삭제
   function deleteComment(commentNum: any) {
     axios.delete(`http://localhost:8081/auth/deleteComment/${commentNum}`);
   }
@@ -34,13 +35,17 @@ function Click_culture(props: any) {
         {
           withCredentials: true,
         }
-      ) //
+      )
       .then((res: any) => {
+        console.log(chgCommentsList);
         setAllComments(res.data);
-        console.log("let's go", res.data);
+        setChgCommentsList("");
+        // setChgCommentsList("change");
+        // console.log("let's go", res.data);
       }); //
   }
 
+  let [chgCommentsList, setChgCommentsList] = useState("change");
   let [signInModal, setSignInModal] = useState("black-bg");
   let [title, setTitle] = useState("");
   let [fee, setFee] = useState("");
@@ -65,11 +70,12 @@ function Click_culture(props: any) {
           withCredentials: true,
         }
       ) //
-      .then((res: any) => {
+      .then(async function (res: any) {
+        console.log(res.data);
         setAllComments(res.data);
-        console.log("let's go", res.data);
+        console.log(allComments);
       }); //
-  }, [writtenComment]);
+  }, [writtenComment, chgCommentsList]);
 
   useEffect(() => {
     axios
@@ -168,6 +174,7 @@ function Click_culture(props: any) {
               onClick={function (e) {
                 e.preventDefault();
                 if (!props.userCheck) {
+                  alert("you can't make the comment without sign-in");
                   setSignInModal("black-bg show-bg");
                 }
               }}
@@ -184,13 +191,14 @@ function Click_culture(props: any) {
                     userId: props.userCheck,
                     comment: writtenComment,
                     contentName: modifiedId,
+                    idNum: props.userIdNum,
                   };
                   axios
                     .post("http://localhost:8081/auth/comment", data, {
                       withCredentials: true,
                     }) //
                     .then((res) => {
-                      console.log(res.data);
+                      // console.log(res.data);
                       update();
                     });
                 }
@@ -205,16 +213,17 @@ function Click_culture(props: any) {
             2. 로그인 한 member 이름    
            */}
           {allComments.map((e: any, i: any) =>
-            props.userCheck === e.Member.member_id ? (
+            props.userIdNum === e.commenter ? (
               <Alert key={i} variant="secondary" className="alertContainer">
-                Member {e.Member.member_id}
+                writer : {e.member_id}
                 <Button
                   variant="outline-secondary"
                   size="sm"
                   className="alertBtn"
-                  onClick={() => {
-                    deleteComment(e.id);
-                    update();
+                  onClick={async () => {
+                    await deleteComment(e.id);
+                    await update();
+                    setChgCommentsList("change");
                   }}
                 >
                   delete
@@ -223,7 +232,7 @@ function Click_culture(props: any) {
               </Alert>
             ) : (
               <Alert key={i} variant="secondary" className="alertContainer">
-                Member {e.Member.member_id}
+                writer : {e.member_id}
                 <Alert className="insideAlert">{e.comment}</Alert>
               </Alert>
             )

@@ -16,7 +16,7 @@ function Typescriptmap(props: any) {
   const hostpitalType = mapInfo.hospitaltype;
 
   useEffect(() => {
-    console.log("큰도시 바뀜");
+    // console.log("큰도시 바뀜");
     let copy: any = [...cityChange];
     copy[0] = bigCity;
     copy[1] = "";
@@ -25,7 +25,7 @@ function Typescriptmap(props: any) {
     setcityChange(copy);
   }, [bigCity]);
   useEffect(() => {
-    console.log("작은도시 바뀜");
+    // console.log("작은도시 바뀜");
     let copy: any = [...cityChange];
     copy[1] = smallCity;
 
