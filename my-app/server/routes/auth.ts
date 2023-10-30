@@ -55,7 +55,7 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
   // console.log(req.isAuthenticated());
   const { newId, newPw } = req.body;
 
-  console.log(connection, "가자");
+  // console.log(connection);
 
   // let yes = connection
   //   .query(`SELECT * FROM members2 WHERE member_id='${newId}'`)
@@ -106,13 +106,13 @@ router.post("/auth/signup", async (req: any, res: any, next: any) => {
 });
 
 router.delete("/auth/deleteComment/:id", async (req: any, res: any) => {
-  console.log(req.params.id, "댓글번호");
+  // console.log(req.params.id, "댓글번호");
   // commentDb.destroy({ where: { id: req.params.id } });
   connection.query(`DELETE FROM comments2 WHERE id='${req.params.id}'`); //
 });
 
 router.post("/auth/comment", async (req: any, res: any) => {
-  console.log("작성한 내용1", req.body);
+  // console.log("작성한 내용1", req.body);
 
   // const memberId = await memberDb.findOne({
   //   where: { member_id: req.body.userId },
@@ -157,7 +157,7 @@ router.post("/auth/bringComments", async (req: any, res: any) => {
       WHERE contentName='${req.body.contentName}'`
     )
     .then(([results, fields]: any) => {
-      console.log("리졸트", results);
+      // console.log("리졸트", results);
       res.send(results);
     });
   // res.send(go);
@@ -165,7 +165,7 @@ router.post("/auth/bringComments", async (req: any, res: any) => {
 
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
   let data = req.body;
-  console.log(data, "토론토");
+  // console.log(data, "토론토");
   // const clickedEvent = await exhibitionDb.findOne({
   //   where: { name: data.clickedEvent },
   // });
@@ -173,7 +173,7 @@ router.post("/auth/exhibition_detail", async (req: any, res: any) => {
   connection
     .query(`SELECT * FROM exhibitiondetails WHERE name='${data.clickedEvent}'`)
     .then(([result, fields]: any) => {
-      console.log("결과", result);
+      // console.log("결과", result);
       res.send(result[0]);
     });
 
