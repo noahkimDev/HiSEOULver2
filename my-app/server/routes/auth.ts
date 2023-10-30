@@ -165,12 +165,19 @@ router.post("/auth/bringComments", async (req: any, res: any) => {
 
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
   let data = req.body;
+  console.log(data, "토론토");
+  // const clickedEvent = await exhibitionDb.findOne({
+  //   where: { name: data.clickedEvent },
+  // });
 
-  const clickedEvent = await exhibitionDb.findOne({
-    where: { name: data.clickedEvent },
-  });
+  connection
+    .query(`SELECT * FROM exhibitiondetails WHERE name='${data.clickedEvent}'`)
+    .then(([result, fields]: any) => {
+      console.log("결과", result);
+      res.send(result[0]);
+    });
 
-  res.send(clickedEvent);
+  // res.send(clickedEvent);
 });
 
 router.get("/auth/getList", (req: any, res: any) => {
