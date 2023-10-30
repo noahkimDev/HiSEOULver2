@@ -41,14 +41,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-sequelize
-  .sync({ alert: true })
-  .then(() => {
-    console.log("데이터베이스 연결성공");
-  })
-  .catch((err: Error) => {
-    console.error(err);
-  });
+// sequelize
+//   .sync({ alert: true })
+//   .then(() => {
+//     console.log("데이터베이스 연결성공");
+//   })
+//   .catch((err: Error) => {
+//     console.error(err);
+//   });
 
 passportIndex();
 
