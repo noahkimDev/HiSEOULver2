@@ -41,7 +41,7 @@ function BringCulture() {
   const [imgArray, setImgArray] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8081/auth/getList") //
+      .get("http://localhost:8081/auth/getList", { withCredentials: true }) //
       .then((res: any) => {
         setImgArray(res.data);
       });

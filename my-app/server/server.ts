@@ -17,10 +17,9 @@ const RedisStore = require("connect-redis").default;
 
 dotenv1.config();
 // const { sequelize } = require("./models/index");
-// const value = redisClient.get("ex-key");
 // app.use(express.favicon());
 app.set("port", process.env.PORT);
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -45,29 +44,32 @@ redisClient.on("error", function (err: any) {
 });
 
 redisClient.connect();
-let redisStore = new RedisStore({
-  client: redisClient,
-  prefix: "session : ",
-});
+// let redisStore = new RedisStore({
+//   client: redisClient,
+//   prefix: "session : ",
+// });
 
 app.use(
   session({
     secret: "secret",
     resave: false,
     saveUninitialized: true,
-    // store: new RedisStore({ client: redisClient, prefix: "session" }),
+    store: new RedisStore({ client: redisClient, prefix: "session : " }),
     cookie: {
       maxAge: 60 * 60 * 24000,
       httpOnly: true,
       secure: false,
-      sameSite: "none",
+      // sameSite: "none",
     },
-    store: redisStore,
+    // store: redisStore,
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
+passportIndex();
+
+app.use("/", auth);
 
 // sequelize
 //   .sync({ alert: true })
@@ -77,10 +79,6 @@ app.use(passport.session());
 //   .catch((err: Error) => {
 //     console.error(err);
 //   });
-
-passportIndex();
-
-app.use("/", auth);
 
 app.use((req: any, res: any, next: any) => {
   const error: any = new Error(`${req.method} ${req.url} 라우터가 없습니다`);
