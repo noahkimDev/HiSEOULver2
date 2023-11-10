@@ -9,9 +9,11 @@ router.post(
     failureRedirect: "/fail",
   }),
   (req: any, res: any) => {
-    req.session.save(() => {
-      res.send("로그인 완료");
-    });
+    req.session.signInCheck = true;
+    res.send("로그인 완료");
+    // req.session.save(() => {
+    //   res.send("로그인 완료");
+    // });
   }
 );
 

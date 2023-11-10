@@ -3,7 +3,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const { checkLogIn } = require("./middlewares");
+// const { checkLogIn } = require("./middlewares");
 
 const memberDb = require("../models/member");
 const exhibitionDb = require("../models/exhibition");
@@ -165,7 +165,7 @@ router.post("/auth/bringComments", async (req: any, res: any) => {
 
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
   let data = req.body;
-  // console.log(data, "토론토");
+  console.log(req.session.signInCheck, "토론토");
   // const clickedEvent = await exhibitionDb.findOne({
   //   where: { name: data.clickedEvent },
   // });
@@ -193,6 +193,7 @@ router.get("/auth/getList", (req: any, res: any) => {
 
 // 최초 접속 시 로그인 유무 확인하는 코드
 router.get("/auth/haveUserInfo", (req: any, res: any) => {
+  console.log("확인", req.session.signInCheck);
   console.log(1, req.isAuthenticated());
   res.json({ user: req.user });
 });
@@ -208,17 +209,17 @@ router.post("/auth/logout", (req: any, res: any, next: any) => {
   res.send("logout");
 });
 
-router.get("/auth/completeLogin", checkLogIn, (req: any, res: any) => {
-  console.log("here we go!");
-  // res.redirect(301, "http://localhost:3000");
-  res.json({ message: "로그인 성공", member_info: req.user.member_id });
-  // 여기서 로그인에 성공한 회원의 회원정보를 보내준다.
-});
+// router.get("/auth/completeLogin", checkLogIn, (req: any, res: any) => {
+//   console.log("here we go!");
+//   // res.redirect(301, "http://localhost:3000");
+//   res.json({ message: "로그인 성공", member_info: req.user.member_id });
+//   // 여기서 로그인에 성공한 회원의 회원정보를 보내준다.
+// });
 
-router.get("/mypage", checkLogIn, (req: any, res: any) => {
-  console.log("check isAuthenticated" + req.isAuthenticated());
-  res.send("good");
-});
+// router.get("/mypage", checkLogIn, (req: any, res: any) => {
+//   console.log("check isAuthenticated" + req.isAuthenticated());
+//   res.send("good");
+// });
 
 router.get("/fail", (req: any, res: any) => {
   res.status(404).send("fail");

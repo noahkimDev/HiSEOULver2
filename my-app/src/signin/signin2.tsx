@@ -29,7 +29,7 @@ function Signin2(props: any) {
       })
       .then((res) => {
         if (res.data) {
-          // console.log("가입성공!", res.data);
+          console.log(res.data);
           exitSignin();
           // // navigate("/");
           setRemoveModal("");
