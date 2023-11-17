@@ -5,8 +5,10 @@
 - 서울에 거주하는 외국인들을 대상으로 생활필수정보를 제공하고자 서비스를 기획하게 되었습니다.( 필요한 정보에 대한 수요를 직접 설문조사)
 - 설문지 링크 : https://bit.ly/3p3nE4p
 - 1인 개발
+- 아키텍처
 
-<img src="https://github.com/noahkimDev/HiSEOULver2/assets/68933325/eebf55fb-6ae6-4936-95dc-5e046ca998c1" width="600" height="400">
+<img src="https://github.com/noahkimDev/HiSEOULver2/assets/68933325/95026e79-de78-4b2e-9792-dd30af7af86a" width="600" height="400">
+
 </br>
 
 - ver1과의 차이점
