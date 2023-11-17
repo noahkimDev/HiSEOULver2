@@ -6,6 +6,7 @@
 - 설문지 링크 : https://bit.ly/3p3nE4p
 - 1인 개발
 
+<img src="https://github.com/noahkimDev/HiSEOULver2/assets/68933325/eebf55fb-6ae6-4936-95dc-5e046ca998c1" width="600" height="400">
 </br>
 
 ## Stack
