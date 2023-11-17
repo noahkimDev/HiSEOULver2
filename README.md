@@ -7,7 +7,9 @@
 - 1인 개발
 - 아키텍처
 
-<img src="https://github.com/noahkimDev/HiSEOULver2/assets/68933325/95026e79-de78-4b2e-9792-dd30af7af86a" width="600" height="400">
+<img src="https://github.com/noahkimDev/HiSEOULver2/assets/68933325/eee7e2ef-cfaa-4478-8792-4c16f314366a" width="600" height="400">
+
+
 
 </br>
 
