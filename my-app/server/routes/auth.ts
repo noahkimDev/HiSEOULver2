@@ -133,7 +133,7 @@ router.post("/auth/comment", async (req: any, res: any) => {
 });
 
 router.post("/auth/bringComments", async (req: any, res: any) => {
-  console.log("look at this", req.body);
+  // console.log("look at this", req.body);
 
   // console.log("test", findMember.id);
 
@@ -165,7 +165,7 @@ router.post("/auth/bringComments", async (req: any, res: any) => {
 
 router.post("/auth/exhibition_detail", async (req: any, res: any) => {
   let data = req.body;
-  console.log(req.session.signInCheck, "토론토");
+  // console.log(req.session.signInCheck);
   // const clickedEvent = await exhibitionDb.findOne({
   //   where: { name: data.clickedEvent },
   // });
@@ -193,8 +193,9 @@ router.get("/auth/getList", (req: any, res: any) => {
 
 // 최초 접속 시 로그인 유무 확인하는 코드
 router.get("/auth/haveUserInfo", (req: any, res: any) => {
-  console.log("확인", req.session.signInCheck);
-  console.log(1, req.isAuthenticated());
+  // console.log("확인", req.session.signInCheck);
+  // console.log(1, req.isAuthenticated());
+  // req.user : 로그인 user 정보가 담겨있는 객체
   res.json({ user: req.user });
 });
 
